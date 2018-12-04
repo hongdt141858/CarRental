@@ -1,0 +1,45 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+div.signup-con{
+	width: 100%;
+	height: 750px;
+	overflow: auto;
+}
+div.signup-form{
+	width: 462px;
+	height: 565px;
+	margin: auto;
+	margin-top: 80px;
+}
+div.signup-form h2{
+	text-align: center;
+}
+#password, #repassword, #date, #address{
+	float: left;
+	width: 200px;
+	
+}
+#repassword, #address{
+	float: right;
+}
+div.checkbox label.policy{
+	font-size: 16px;
+}
+label.label1{
+	margin-left: 115px;
+	font-size: 16px;
+}
+.btn-signin{
+	width: 100%;
+	font-size: 16px;
+}
+.btn-google{
+	width: 45%;
+	float: right;
+}
+.btn-facebook{
+	width: 45%;
+	float: left;
+}
