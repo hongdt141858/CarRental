@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-
+import Header from './header/Header';
 import './App.css';
 import Signin from './signin/Signin';
 import HomePage from './homepage/HomePage';
 import Guide from './guide/Guide';
+
 
 class App extends Component {
   render() {
