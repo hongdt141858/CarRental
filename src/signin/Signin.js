@@ -8,6 +8,12 @@ export default class Signin extends Component {
         super(props)
         this.state = {
             emailPhone: "",
+            username: "",
+            password: "",
+            newpassword: "",
+            cmt:"",
+            date:"",
+            address:"",
         }
     }
 
@@ -26,18 +32,18 @@ export default class Signin extends Component {
                         <div className="form-group">
                             <input type="text" className="form-control phone" name="emailPhone" placeholder="Điện thoại hoặc email" onChange={this.handChange} />
                             <br />
-                            <input type="text" className="form-control name" placeholder="Tên hiển thị" />
+                            <input type="text" className="form-control name" name="username" placeholder="Tên hiển thị" onChange={this.handChange} />
                             <br />
-                            <input type="password" className="form-control" id="password" placeholder="Mật khẩu" />
+                            <input type="password" className="form-control" id="password" name="password" placeholder="Mật khẩu" onChange={this.handChange} />
+                        <input type="password" className="form-control" id="repassword" name="newpassword" placeholder="Xác nhận mật khẩu" onChange={this.handChange} />
+                        <br />
+                        <br />
+                        <br />
+                        <input type="text" className="form-control" id="cmt" name="cmt" placeholder="Số CMND" onChange={this.handChange} />
+                        <br />
+                        <input type="text" className="form-control" id="date" name="date" placeholder="Ngày cấp" onChange={this.handChange} />
+                        <input type="text" className="form-control" id="address" name="address" placeholder="Nơi cấp" onChange={this.handChange}/>
                         </div>
-                        <input type="password" className="form-control" id="repassword" placeholder="Xác nhận mật khẩu" />
-                        <br />
-                        <br />
-                        <br />
-                        <input type="text" className="form-control" id="cmt" placeholder="Số CMND" />
-                        <br />
-                        <input type="text" className="form-control" id="date" placeholder="Ngày cấp" />
-                        <input type="text" className="form-control" id="address" placeholder="Nơi cấp" />
                         <br />
                         <br />
                         <div className="checkbox">
