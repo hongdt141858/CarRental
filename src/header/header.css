@@ -153,3 +153,10 @@ footer{
 	height: 200px;
 	background-color: blue;
 }
+
+.slick-slider{
+	display: block;
+	position: relative;
+	margin-left: 10%;
+	margin-right: 10%;
+}

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import { reactLocalStorage } from 'reactjs-localstorage';
+import Slider from "react-slick";
 
 import './header.css';
 import im_step1 from '../images/step1.png';
 import im_step2 from '../images/step2.png';
 import im_step3 from '../images/step3.png';
 import im_step4 from '../images/step4.png';
+import CarDetail from '../car_detail/CarDetail';
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -70,6 +73,14 @@ class Header extends Component {
         if (this.state.redirectSignIn) {
             return <Redirect push to="/sign_in" />;
         }
+
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 1
+        };
         return (
             <div>
                 <header id="header">
@@ -133,9 +144,25 @@ class Header extends Component {
                         </p>
                     </div>
                 </div>
-                <div className="famous-place">
-                    <div className="slide">
-                    </div>
+                <div className="famous-place" style={{textAlign: 'center'}}>
+                    <h1 style={{marginBottom: '20px', marginTop: '20px'}}>Xe nổi bật </h1>
+                    <Slider {...settings} >
+                        <div className="slide" >
+                            <CarDetail />
+                        </div>
+                        <div className="slide" >
+                            <CarDetail />
+                        </div>
+                        <div className="slide" >
+                            <CarDetail />
+                        </div>
+                        <div className="slide" >
+                            <CarDetail />
+                        </div>
+                        <div className="slide" >
+                            <CarDetail />
+                        </div>
+                    </Slider>
                 </div>
             </div>
         );
