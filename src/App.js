@@ -7,6 +7,7 @@ import Guide from './guide/Guide';
 import CarDetail from './car_detail/CarDetail';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import Car_Item from './car_item/Car_Item';
 
 class App extends Component {
   render() {
@@ -22,10 +23,12 @@ class App extends Component {
             <Route exact path="/guide" component={() => <Guide />} />
             <Route exact path="/sign_in" component={() => <Signin />} />
             <Route exact path="/car" component={() => <CarDetail />} />
+            <Route exact path="/car_item" component={() => <Car_Item />} />
           </Switch>
 
         </div>
       </Router>
+
     );
   }
 }

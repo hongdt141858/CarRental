@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div.car_item{
+    width: 400px;
+    height: 425px;
+    background-color: red;
+}
