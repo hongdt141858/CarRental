@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div.footer{
+    height: 350px;
+    background: linear-gradient(to right, #0f959b, #064a50);
+}
+div.footer-main{
+    width: 100%;
+    height: 80%;
+}
+div.contact{
+    float: left;
+    width: 270px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+p.contact,p.introduce,p.policy,p.support{
+    color: white;
+    font-size: 18px;
+}
+img.email{
+    float: left;
+}
+p.email,p.phone,p.text{
+    color: white;
+    font-size: 16px;
+    float: left;
+    margin-left:3px;
+}
+img.phone{
+    float: left;
+}
+p.phone{
+    float: left;
+}
+div.introduce{
+    float:left;
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 80px;
+}
+div.policy{
+    float:left;
+    width: 280px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 80px;
+}
+div.support{
+    float:left;
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 80px;
+}
+div.license{
+    width: 100%;
+    height: 20%;
+}
+div.license p{
+    text-align: center;
+    width: 100%;
+    color: white;
+}
