@@ -13,6 +13,33 @@ export default class Car_Item extends Component{
                 <div className="img-car">
                     <img src=" https://n1-pstg.mioto.vn/g/2018/09/04/14/M7zkITu97njAk7pNYhhESg.jpg"/>
                 </div>
+                <div className="desc-car">
+                    <div className="rating">
+                        <span className="star">
+                            <div className="star-rating">
+                                <img src="images/star_yellow.png"/>&nbsp;
+                                <img src="images/star_yellow.png"/>&nbsp;
+                                <img src="images/star.png"/>&nbsp;
+                                <img src="images/star.png"/>&nbsp;
+                                <img src="images/star.png"/>&nbsp;
+                            </div>
+                            <p><b>750K</b></p>
+                        </span>
+                    </div>
+                    <div className="name-car">
+                        <h2>CHEVROLET CRUZE 2018</h2>
+                    </div>
+                    <div className="trip-distance">
+                        <div className="num-trip">
+                                <img src ="images/trip.png"/>
+                                <p>2 chuyến</p>
+                        </div>
+                        <div className="num-distance">
+                                <img src="images/distance.png"/>
+                                <p>5.5 km</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
