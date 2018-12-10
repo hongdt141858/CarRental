@@ -1,0 +1,309 @@
+*{
+    margin:0;
+    padding: 0;
+}
+div.con-screenDetail{
+    width: 85%;
+    height: 700px;
+    margin: auto;
+    margin-top: 30px;
+}
+div.left-screen{
+    width: 65%;
+    height: 100%; 
+    float: left;
+}
+div.right-screen{
+    width: 35%;
+    height: 100%;
+    float: left;
+}
+div.left-screen img{
+    width: 100%;
+    height: 420px;
+}
+div.comment{
+    width: 100%;
+    height: 80px;
+    margin-top: 20px;
+}
+div.comment p{
+    font-size: 20px;
+    height: 30%;
+}
+div.comment div.vote{
+    height: 20px;
+    display: flex;
+}
+div.vote img{
+    height: 100%;
+    width: 20px;
+    margin-right: 4px;
+}
+div.parameter{
+    width: 100%;
+    height: 180px;
+}
+div.paraleft, div.paracenter, div.pararight{
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+div.paraleft1{
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.paraleft1 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.paraleft1 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.paraleft2{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.paraleft2 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.paraleft2 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.paraleft3{
+    margin-top:10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.paraleft3 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.paraleft3 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.paracenter1{
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.paracenter1 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.paracenter1 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.paracenter2{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.paracenter2 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.paracenter2 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.paracenter3{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.paracenter3 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.paracenter3 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.pararight1{
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.pararight1 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.pararight1 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.pararight2{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+div.pararight2 img{
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+div.pararight2 p{
+    float: left;
+    margin-top:12px;
+    margin-left:10px;
+}
+div.price{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+}
+div.price p{
+    font-size: 20px;
+    float: right;
+    margin-right: 15px;
+}
+div.date{
+    width: 90%;
+    height: 62px;
+    border: 1px solid #B1B1B1;
+    border-radius: 5px;
+    margin:auto;
+    display: flex;
+}
+div.dateleft{
+    width: 44%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+}
+div.dateleft1{
+    width: 100%;
+    height: 30%;
+}
+div.dateleft1  p{
+    color: #B1B1B1;
+    font-size: 12px;
+}
+div.dateleft2{
+    width: 100%;
+    height: 70%;
+}
+div.dateleft2 p{
+    color: #B1B1B1;
+    font-size: 25px;
+}
+div.centerDate{
+    width: 1px;
+    height: 70%;
+    border: 1px solid #B1B1B1;
+    float: left;
+    margin-top: 10px;
+}
+div.dateright{
+    width: 45%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+}
+div.dateright1{
+    width: 100%;
+    height: 30%;
+    margin-top: 0px;
+}
+div.dateright1  p{
+    color: #B1B1B1;
+    font-size: 12px;
+}
+div.dateright2{
+    width: 100%;
+    height: 70%;
+}
+div.dateright2 p{
+    color: #B1B1B1;
+    font-size: 25px;
+}
+div.trip-detail{
+    width: 90%;
+    height: 150px;
+    margin: auto;
+    border-bottom: 1px solid #B1B1B1;
+    margin-top: 15px;
+}
+div.trip-name{
+    height: 20%;
+}
+div.trip-name p{
+    font-size: 13px;
+    color: #B1B1B1;
+}
+div.price1{
+    width: 100%;
+    margin: auto;
+    height: 20%;
+}
+div.price11{
+    width: 80%;
+    float: left;
+}
+div.price12{
+    width: 20%;
+    float: left;
+}
+div.price2{
+    width: 100%;
+    margin: auto;
+    height: 20%;
+}
+div.price21{
+    width: 80%;
+    float: left;
+}
+div.price22{
+    width: 20%;
+    float: left;
+}
+div.price3{
+    width: 100%;
+    margin: auto;
+    height: 20%;
+}
+div.price31{
+    width: 80%;
+    float: left;
+}
+div.price32{
+    width: 20%;
+    float: left;
+}
+div.paper{
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+div.papertitle p{
+    color: #B1B1B1;
+    font-size: 13px;
+}
+

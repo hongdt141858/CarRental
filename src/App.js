@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Car_Item from './car_item/Car_Item';
 import Footer from './footer/Footer';
+import ScreenDetail from './screen_detail/ScreenDetail';
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path="/car" component={() => <CarDetail />} />
             <Route exact path="/car_item" component={() => <Car_Item />} />
             <Route exact path="/footer" component={() => <Footer />} />
+            <Route exact path="/screen_detail" component={() => <ScreenDetail/>} />
           </Switch>
 
         </div>
