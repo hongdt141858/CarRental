@@ -11,14 +11,11 @@ import Car_Item from './car_item/Car_Item';
 import Footer from './footer/Footer';
 import ScreenDetail from './screen_detail/ScreenDetail';
 import Profile from './profile/Profile';
+import Change_Password from './change_password/Change_Password';
 
 class App extends Component {
   render() {
     return (
-      // <div className="App">
-      //   {/* <Signin/> */}
-      //   <Guide/>
-      // </div>
       <Router>
         <div>
           <Switch>
@@ -30,6 +27,7 @@ class App extends Component {
             <Route exact path="/footer" component={() => <Footer />} />
             <Route exact path="/screen_detail" component={() => <ScreenDetail/>} />
             <Route exact path="/profile" component={() => <Profile/>} />
+            <Route exact path="/change_password" component={() => <Change_Password/>} />
           </Switch>
 
         </div>
