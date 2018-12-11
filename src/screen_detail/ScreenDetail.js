@@ -124,8 +124,51 @@ export default class ScreenDetail extends Component{
                             <p>Xuất trình khi nhận xe</p>
                         </div>
                         <div className="paper1">
-                            <img src="images/check.png" />
+                            <img src="images/check.png"/>
+                            <p>CMND/CCCD</p>
                         </div>
+                        <div className="paper2">
+                            <img src="images/check.png"/>
+                            <p>Hộ khẩu/KT3</p>
+                        </div>
+                        <div className="paper3">
+                            <img src="images/check.png"/>
+                            <p>Bằng lái xe B1, B2</p>
+                        </div>
+                    </div>
+                    <div className="mortgage">
+                        <div className="mortgagetitle">
+                            <p>Thế chấp khi nhận xe</p>
+                        </div>
+                        <div className="mortgage1">
+                            <img src="images/check.png"/>
+                            <p>Xe máy hoặc tiền mặt có trị giá trên 15 triệu đồng</p>
+                        </div>
+                        <div className="mortgage2">
+                            <img src="images/check.png"/>
+                            <p>Hộ khẩu/KT3</p>
+                        </div>
+                    </div>
+                    <div className="limit">
+                        <div className="limittitle">
+                            <p>Giới hạn quãng đường</p>
+                        </div>
+                        <div className="limit-value">
+                            <p>500 km/ngày, phí vượt 10.000đ/km</p>
+                        </div>
+                        
+                    </div>
+                    <div className="giaoxe">
+                        <div className="giaoxetitle">
+                            <p>Giao xe tận nơi</p>
+                        </div>
+                        <div className="giaoxe-value">
+                            <p>Trong bán kính 10km, phí đ10000/km</p>
+                        </div>
+                        
+                    </div>
+                    <div className="btn">
+                        <button className="btn-primary">Gửi yêu cầu thuê xe</button>
                     </div>
                 </div>
             </div>
