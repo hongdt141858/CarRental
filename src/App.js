@@ -19,7 +19,7 @@ class App extends Component {
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={() => <Header />} />
+            <Route exact path="/" component={() => <HomePage />} />
             <Route exact path="/guide" component={() => <Guide />} />
             <Route exact path="/sign_in" component={() => <Signin />} />
             <Route exact path="/car" component={() => <CarDetail />} />
