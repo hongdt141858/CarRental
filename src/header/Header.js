@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import { reactLocalStorage } from 'reactjs-localstorage';
 import Slider from "react-slick";
-
+import Footer from "../footer/Footer";
 import './header.css';
 import im_step1 from '../images/step1.png';
 import im_step2 from '../images/step2.png';
 import im_step3 from '../images/step3.png';
 import im_step4 from '../images/step4.png';
 import CarDetail from '../car_detail/CarDetail';
+import DateTimePicker from 'react-datetime-picker';
+
 
 class Header extends Component {
     constructor(props) {
@@ -19,6 +21,9 @@ class Header extends Component {
             hoverSignIn: false,
             redirectGuide: false,
             redirectSignIn: false,
+            dateStart: new Date(),
+            dateEnd: new Date(),
+            city: ["Hà Nội", "Bắc Ninh", "Hải Dương", "Thái Bình", "Thanh Hóa"],
         }
     }
 
@@ -66,6 +71,15 @@ class Header extends Component {
         this.setState({ redirectSignIn: true });
     }
 
+    onChangeStartDate = dateStart => this.setState({ dateStart });
+
+    onChangeEndDate = dateEnd => this.setState({ dateEnd });
+
+    onChangeCity = (value) => {
+        console.log("111  " + value)
+        
+    }
+
     render() {
         if (this.state.redirectGuide) {
             return <Redirect push to="/guide" />;
@@ -81,6 +95,11 @@ class Header extends Component {
             slidesToShow: 4,
             slidesToScroll: 1
         };
+
+        const listcity = this.state.city.map((city) =>
+            <option>{city}</option>
+        );
+
         return (
             <div>
                 <header id="header">
@@ -112,9 +131,29 @@ class Header extends Component {
                 </header>
                 <div className="con-search">
                     <div className="search">
-                        <label className="text-search"> Thuê xe tự lái - Tải ngay OcChoOTo</label>
+                        <label className="text-search"> Thuê xe tự lái - OcChoOTo</label>
                         <div className="input-search">
-                            <input type="text" className="" id="address" placeholder="Nhập địa chỉ ..." />
+                            <div className="city" style={{ float: "left" }}>
+                                <span> Địa chỉ: </span>
+                                <select style={{ width: "200px", height: "27px" }} onChange={this.onChangeCity}>
+                                    {listcity}
+                                </select>
+                            </div>
+                            <div className="start_date" style={{ float: "left", marginLeft: "20px" }}>
+                                <span>Ngày nhận: </span>
+                                <DateTimePicker
+                                    onChange={this.onChangeStartDate}
+                                    value={this.state.dateStart}
+                                />
+                            </div>
+                            <div className="end_date" style={{ float: "left", marginLeft: "20px" }}>
+                                <span>Ngày trả: </span>
+                                <DateTimePicker
+                                    onChange={this.onChangeEndDate}
+                                    value={this.state.dateEnd}
+                                />
+                            </div>
+                            <i className="zmdi zmdi-search" style={{ fontSize: "40px", float:"left", marginLeft: "30px"}}></i>
                         </div>
                     </div>
                 </div>
@@ -144,8 +183,8 @@ class Header extends Component {
                         </p>
                     </div>
                 </div>
-                <div className="famous-place" style={{textAlign: 'center'}}>
-                    <h1 style={{marginBottom: '20px', marginTop: '20px'}}>Xe nổi bật </h1>
+                <div className="famous-place" style={{ textAlign: 'center' }}>
+                    <h1 style={{ marginBottom: '20px', marginTop: '20px' }}>Xe nổi bật </h1>
                     <Slider {...settings} >
                         <div className="slide" >
                             <CarDetail />
@@ -164,6 +203,7 @@ class Header extends Component {
                         </div>
                     </Slider>
                 </div>
+                <Footer />
             </div>
         );
     }
