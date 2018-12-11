@@ -78,7 +78,7 @@ class Header extends Component {
         return (
             <div>
                 <header id="header">
-                    <nav className="navbar navbar-dark bg-primary header">
+                    <nav className="navbar navbar-dark bg-primary header occho">
                         <div className="nav-ul">
                             <label className="nav-a" onClick={this.redirectHome}>LOGO</label>
                             <span className="nav-a"><i className="zmdi zmdi-phone"></i> 0965143540</span>

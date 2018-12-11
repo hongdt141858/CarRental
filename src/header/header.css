@@ -6,6 +6,9 @@
 nav.navbar{
 	margin-bottom: 0px;
 }
+nav.occho{
+	background-color: #0f949a;
+}
 div.nav-ul{
 	margin-top: 10px;
 }
@@ -14,10 +17,10 @@ span.nav-a{
 	color: black;
 	margin: 20px ;
 	margin-top: 5px;
-	margin-left: 60px;
+	margin-left: 50px;
 }
 label.nav-a{
-	margin-left: 60px ;
+	margin-left: 40px ;
 }
 span.nav-dangky{
 	margin-left: 60px;
