@@ -15,7 +15,7 @@ div.contact{
     width: 270px;
     height: 200px;
     margin-top: 50px;
-    margin-left: 100px;
+    margin-left: 70px;
 }
 p.contact,p.introduce,p.policy,p.support{
     color: white;
@@ -41,21 +41,21 @@ div.introduce{
     width: 200px;
     height: 200px;
     margin-top: 50px;
-    margin-left: 80px;
+    margin-left: 70px;
 }
 div.policy{
     float:left;
     width: 280px;
     height: 200px;
     margin-top: 50px;
-    margin-left: 80px;
+    margin-left: 40px;
 }
 div.support{
     float:left;
     width: 200px;
     height: 200px;
     margin-top: 50px;
-    margin-left: 80px;
+    margin-left: 50px;
 }
 div.license{
     width: 100%;
