@@ -111,8 +111,8 @@ class HomePage extends Component {
                         </p>
                     </div>
                 </div>
-                <div className="famous-place" style={{ textAlign: 'center' }}>
-                    <h1 style={{ marginBottom: '20px', marginTop: '20px' }}>Xe nổi bật </h1>
+                <div className="famous-car" >
+                    <h1>Xe nổi bật </h1>
                     <Slider {...settings} >
                         <div className="slide" >
                             <CarDetail />
