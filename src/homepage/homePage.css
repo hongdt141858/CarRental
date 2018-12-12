@@ -78,9 +78,13 @@ div.guide p.continue{
 	margin-right: 15px;
 	text-decoration: underline;
 }
-div.famous-place{
+div.famous-car{
 	width: 100%;
 	height: 420px;
+	margin-top: 20px;
+}
+div.famous-car h1{
+	text-align: center;
 }
 
 /* CSS for SignUp */
@@ -139,8 +143,8 @@ footer{
 .slick-slider{
 	display: block;
 	position: relative;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 4%;
+	margin-right: 4%;
 }
 .react-datetime-picker__inputGroup__input{
 	color: #fff;

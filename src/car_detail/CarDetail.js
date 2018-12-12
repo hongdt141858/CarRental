@@ -26,7 +26,8 @@ export default class CarDetail extends Component{
                                 
                             </div>
                             <div className="gachnoi"></div>
-                            <p>0 chuyến</p>
+                            <div className="num-trip"><p>0 chuyến</p></div>
+                            
                         </span>
                     </div>
                     <div className="nameCar">
