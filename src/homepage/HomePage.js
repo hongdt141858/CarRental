@@ -12,6 +12,9 @@ import im_step4 from '../images/step4.png';
 import CarDetail from '../car_detail/CarDetail';
 import DateTimePicker from 'react-datetime-picker';
 import Header from '../header/Header';
+import MyUtil from '../util/MyUtil';
+
+import CityApi from '../api/CityApi';
 
 
 class HomePage extends Component {
@@ -21,25 +24,24 @@ class HomePage extends Component {
             redirectListCar: false,
             dateTo: new Date(reactLocalStorage.get(VarConf.home.date_to)),
             dateFrom: new Date(reactLocalStorage.get(VarConf.home.date_from)),
-            citys: [],
+            cities: [],
             city: reactLocalStorage.get(VarConf.home.city),
         }
     }
 
-    componentWillMount(){
-        fetch("http://localhost:8081/city")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({
-                citys: result.data
-              });
-            },
-        
-          );
+    async componentWillMount() {
+        this.mounted = true;
+        await CityApi.getAll().then(data => {
+            if (this.mounted) this.setState({ cities: data });
+            
+        })
         reactLocalStorage.set(VarConf.home.city,1);
         reactLocalStorage.set(VarConf.home.date_to, new Date());
         reactLocalStorage.set(VarConf.home.date_from, new Date());
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
     }
 
     redirectListCar = () => {
@@ -57,10 +59,11 @@ class HomePage extends Component {
     }
 
     render() {
+        console.log("data  " + this.state.cities);
         if (this.state.redirectListCar) {
-            var data = reactLocalStorage.get(VarConf.home.city);
-            data += '/' + reactLocalStorage.get(VarConf.home.date_to);
-            data += '/' + reactLocalStorage.get(VarConf.home.date_from);
+            var data = this.state.city;
+            data += '/' + MyUtil.getDatetimeFormatEn(this.state.dateTo);
+            data += '/' + MyUtil.getDatetimeFormatEn(this.state.dateFrom);
             return <Redirect push to={"/home/car_list/" + data + ""} />;
         }
 
@@ -71,8 +74,8 @@ class HomePage extends Component {
             slidesToShow: 4,
             slidesToScroll: 1
         };
-        var city = this.state.citys ? this.state.citys :[]
-        const listcity = this.state.citys.map((item) =>
+        var city = this.state.cities ? this.state.cities :[]
+        const listcity = this.state.cities.map((item) =>
             <option value={item.city_id}>{item.city_name}</option>
        );
         

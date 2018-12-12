@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../header/Header';
 import Car_Item from '../car_item/Car_Item'
+import './listCar.css';
 
 import ListCar from '../list_car/ListCar';
 export default class Guide extends Component {
@@ -12,10 +13,26 @@ export default class Guide extends Component {
     }
     render() {
         return (
-            <div>
+            <div >
                 <Header />
-                <Car_Item />
+                <div className="body_screen">
+                    <div className="filter">
+                        <div className="address">
 
+                        </div>
+                        <div className="date_time">
+
+                        </div>
+                    </div>
+                    <div className="list">
+                        <div style={{ margin: "5px", float: "left" }}>
+                            <Car_Item />
+                        </div>
+                        <div style={{ margin: "5px", float: "left" }}>
+                            <Car_Item />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
