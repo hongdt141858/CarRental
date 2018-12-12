@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
+import VarConf from '../VarConf';
 import { reactLocalStorage } from 'reactjs-localstorage';
 import Slider from "react-slick";
 import Footer from "../footer/Footer";
@@ -18,28 +19,49 @@ class HomePage extends Component {
         super(props);
         this.state = {
             redirectListCar: false,
-            dateStart: new Date(),
-            dateEnd: new Date(),
-            city: ["Hà Nội", "Bắc Ninh", "Hải Dương", "Thái Bình", "Thanh Hóa"],
+            dateTo: new Date(reactLocalStorage.get(VarConf.home.date_to)),
+            dateFrom: new Date(reactLocalStorage.get(VarConf.home.date_from)),
+            citys: [],
+            city: reactLocalStorage.get(VarConf.home.city),
         }
+    }
+
+    componentWillMount(){
+        fetch("http://localhost:8081/city")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                citys: result.data
+              });
+            },
+        
+          );
+        reactLocalStorage.set(VarConf.home.city,1);
+        reactLocalStorage.set(VarConf.home.date_to, new Date());
+        reactLocalStorage.set(VarConf.home.date_from, new Date());
     }
 
     redirectListCar = () => {
         this.setState({ redirectListCar: true });
     }
 
-    onChangeStartDate = dateStart => this.setState({ dateStart });
+    onChangeStartDate = date => this.setState({ dateTo: new Date(date) });
 
-    onChangeEndDate = dateEnd => this.setState({ dateEnd });
+    onChangeEndDate = date => this.setState({ dateFrom: new Date(date) });
 
-    onChangeCity = (value) => {
-        console.log("111  " + value)
-        
+    onChangeCity = (event) => {
+        this.setState({
+            city: event.target.value,
+        });
     }
 
     render() {
         if (this.state.redirectListCar) {
-            return <Redirect push to="/car_item" />;
+            var data = reactLocalStorage.get(VarConf.home.city);
+            data += '/' + reactLocalStorage.get(VarConf.home.date_to);
+            data += '/' + reactLocalStorage.get(VarConf.home.date_from);
+            return <Redirect push to={"/home/car_list/" + data + ""} />;
         }
 
         var settings = {
@@ -49,10 +71,15 @@ class HomePage extends Component {
             slidesToShow: 4,
             slidesToScroll: 1
         };
-
-        const listcity = this.state.city.map((city) =>
-            <option>{city}</option>
-        );
+        var city = this.state.citys ? this.state.citys :[]
+        const listcity = this.state.citys.map((item) =>
+            <option value={item.city_id}>{item.city_name}</option>
+       );
+        
+        // console.log("hdgd " + reactLocalStorage.get(VarConf.home.city));
+        console.log("city  " + this.state.city);
+        console.log("to " + this.state.dateTo);
+        console.log("from  " + this.state.dateFrom);
 
         return (
             <div>
@@ -71,14 +98,14 @@ class HomePage extends Component {
                                 <span>Ngày nhận: </span>
                                 <DateTimePicker
                                     onChange={this.onChangeStartDate}
-                                    value={this.state.dateStart}
+                                    value={this.state.dateTo}
                                 />
                             </div>
                             <div className="end_date" style={{ float: "left", marginLeft: "20px" }}>
                                 <span>Ngày trả: </span>
                                 <DateTimePicker
                                     onChange={this.onChangeEndDate}
-                                    value={this.state.dateEnd}
+                                    value={this.state.dateFrom}
                                 />
                             </div>
                             <i className="zmdi zmdi-search" style={{ fontSize: "38px", float:"left", marginLeft: "20px"}} onClick={this.redirectListCar}></i>
