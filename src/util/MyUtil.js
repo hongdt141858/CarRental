@@ -37,11 +37,11 @@ const MyUtil = {
     },
     getDateByDateFormat: function (dateStr) {
         dateStr = dateStr.toString();
-        var hour = dateStr.substr(0, 2);
-        var minute = dateStr.substr(3, 2);
-        var day = dateStr.substr(6, 2);
-        var month = dateStr.substr(9, 2);
-        var year = dateStr.substr(12, 4);
+        var year = dateStr.substr(0, 4);
+        var month = dateStr.substr(5, 2);
+        var day = dateStr.substr(8, 2);
+        var hour = dateStr.substr(11, 2);
+        var minute = dateStr.substr(14, 2);
         var date = new Date(year, month - 1, day, hour, minute);
         return date;
 

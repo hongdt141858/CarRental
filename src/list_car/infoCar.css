@@ -1,0 +1,6 @@
+.react-datetime-picker__wrapper{
+    border: none;
+}
+.date_fix div div div .react-datetime-picker__inputGroup__input{
+    color: black !important;
+}

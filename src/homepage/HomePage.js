@@ -25,13 +25,13 @@ class HomePage extends Component {
             dateTo: new Date(reactLocalStorage.get(VarConf.home.date_to)),
             dateFrom: new Date(reactLocalStorage.get(VarConf.home.date_from)),
             cities: [],
-            city: reactLocalStorage.get(VarConf.home.city),
         }
     }
 
     async componentWillMount() {
         this.mounted = true;
         await CityApi.getAll().then(data => {
+            reactLocalStorage.setObject("home.cities", data);
             if (this.mounted) this.setState({ cities: data });
             
         })
@@ -48,18 +48,29 @@ class HomePage extends Component {
         this.setState({ redirectListCar: true });
     }
 
-    onChangeStartDate = date => this.setState({ dateTo: new Date(date) });
+    onChangeStartDate = date => {
+        reactLocalStorage.set(VarConf.home.date_to, new Date(date));
+        this.setState({ 
+            dateTo: new Date(date) 
+        });
+    }
 
-    onChangeEndDate = date => this.setState({ dateFrom: new Date(date) });
+    onChangeEndDate = date => {
+        reactLocalStorage.set(VarConf.home.date_from, new Date(date));
+        this.setState({ 
+            dateFrom: new Date(date) 
+        });
+    }
 
     onChangeCity = (event) => {
         this.setState({
             city: event.target.value,
+            
         });
+        reactLocalStorage.set(VarConf.home.city,event.target.value);
     }
 
     render() {
-        console.log("data  " + this.state.cities);
         if (this.state.redirectListCar) {
             var data = this.state.city;
             data += '/' + MyUtil.getDatetimeFormatEn(this.state.dateTo);
@@ -74,16 +85,12 @@ class HomePage extends Component {
             slidesToShow: 4,
             slidesToScroll: 1
         };
+
         var city = this.state.cities ? this.state.cities :[]
         const listcity = this.state.cities.map((item) =>
             <option value={item.city_id}>{item.city_name}</option>
        );
         
-        // console.log("hdgd " + reactLocalStorage.get(VarConf.home.city));
-        console.log("city  " + this.state.city);
-        console.log("to " + this.state.dateTo);
-        console.log("from  " + this.state.dateFrom);
-
         return (
             <div>
                 <Header />

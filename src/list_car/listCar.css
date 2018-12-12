@@ -1,13 +1,14 @@
 .filter{
     width: 30%;
     float: left;
-    height: 500px;
+    height: auto;
     padding-left: 5%;
+    padding-right: 5%;
 }
 .list{
     width: 70%;
     float: left;
-    height: 500px;
+    height: auto;
 }
 .body_screen{
     width: 100%;

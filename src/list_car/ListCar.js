@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../header/Header';
-import Car_Item from '../car_item/Car_Item'
+import Car_Item from '../car_item/Car_Item';
+import InfoCar from './InfoCar';
 import './listCar.css';
 
-import ListCar from '../list_car/ListCar';
-export default class Guide extends Component {
+export default class ListCar extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
     render() {
         return (
@@ -17,12 +17,7 @@ export default class Guide extends Component {
                 <Header />
                 <div className="body_screen">
                     <div className="filter">
-                        <div className="address">
-
-                        </div>
-                        <div className="date_time">
-
-                        </div>
+                        <InfoCar />
                     </div>
                     <div className="list">
                         <div style={{ margin: "5px", float: "left" }}>
