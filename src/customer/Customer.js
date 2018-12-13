@@ -9,7 +9,8 @@ export default class Customer extends Component{
     }
     render(){
         return (
-            <div className="customer-container">
+            <div className="big-container">
+                <div className="customer-container">
                 <div className="title-cus">
                     <h3><b>THÔNG TIN KHÁCH HÀNG</b></h3>
                     <p>Nhập thông tin cá nhân để tiến hành đặt</p>
@@ -61,6 +62,61 @@ export default class Customer extends Component{
                     <button>Quay lại</button>
                 </div>
             </div>
+                <div className="des-vehicle">
+                    <div className="img-vehicle">
+                        <img src="images/vehicle.png"/>
+                    </div>
+                    <div className="namecar">
+                        <p>HYUNDAI I10 HATCHBACK 1.0 AT 2018</p>
+                    </div>
+                    <div className="pickup">
+                        <div className="title">
+                            <p className="title">HÌNH THỨC NHẬN XE</p>
+                        </div>
+                        <div className="value">
+                            <p className="value">Nhận xe tại đại lý</p>
+                        </div>    
+                    </div>
+                    <div className="timer">
+                        <div className="title">
+                            <p className="title">THỜI GIAN</p>
+                        </div>
+                        <div className="value">
+                            <p className="value">20:30 13/12/2018 - 19:00 14/12/2018</p>
+                        </div>    
+                    </div>
+                    <div className="limittrip">
+                        <div className="title">
+                            <p className="title">GIỚI HẠN QUÃNG ĐƯỜNG</p>
+                        </div>
+                        <div className="value">
+                            <p className="value">Tối đa 250km/ngày, phụ trội 3.000 đ/km</p>
+                        </div>    
+                    </div>
+                    <div className="price">
+                        <div className="title-price">
+                            <p className="ti-price">CHI TIẾT GIÁ</p>
+                        </div>
+                        <div className="value1">
+                            <p className="value11">Đơn giá ngày</p>
+                            <p className="value12"><b>600.000 đ</b></p>
+                        </div> 
+                        <div className="value2">
+                            <p className="value21">Ngày</p>
+                            <p className="value22"><b>2 ngày</b></p>
+                        </div>    
+                    </div>
+                    <div className="line-price">
+
+                    </div>
+                    <div className="sumprice">
+                        <p className="price1">TỔNG</p>
+                        <p className="price2">120.000 đ</p>
+                    </div>
+                </div>
+                
+            </div>
+            
         )
     }
 }
