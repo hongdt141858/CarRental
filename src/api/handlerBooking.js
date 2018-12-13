@@ -11,11 +11,12 @@ const save = (state) => {
 
 
 const getDayNum = (rentalDate, returnDate) => {
+    console.log(rentalFormat + ' - ' + returnFormat, ">>>>>>>>>>>>>>>>>>")
 
     var rentalFormat = MyUtil.getDateFormatEn(new Date(rentalDate));
     var returnFormat = MyUtil.getDateFormatEn(new Date(returnDate))
 
-    console.log(rentalFormat + ' - ' + returnFormat)
+    console.log(rentalFormat + ' - ' + returnFormat, ">>>>>>>>>>>>>>>>>>")
 
     var rld = rentalFormat ? new Date(rentalFormat).getTime() : 0;
     var rnd = returnFormat ? new Date(returnFormat).getTime() : 0;
@@ -38,6 +39,7 @@ const getDays = (rentalDate, returnDate) => {
 }
 
 const getWdays = (partWday, rentalDate, returnDate) => {
+
     var arr_days = getDays(rentalDate, returnDate);
     var wdays = [];
     if (arr_days.length > 0 && partWday.length > 0) {
@@ -58,9 +60,9 @@ const getHolis = (partHoli, rentalDate, returnDate) => {
         arr_days.map(d => {
             var date = d.getDate();
             var month = d.getMonth();
-            partHoli.map(ph => {
-                var holiFrom = ph.partner_holidays.holiday_from;
-                var holiTo = ph.partner_holidays.holiday_from_to;
+            partHoli.map(ph => {console.log(ph)             
+                var holiFrom = ph.holiday.holiday_from;
+                var holiTo = ph.holiday.holiday_from_to;
                 if (holiFrom && holiTo) {
                     var dateFrom = new Date(holiFrom);
                     var dateTo = new Date(holiTo);
@@ -121,6 +123,7 @@ const getHoliExtraFee = (vehicle) => {
 }
 
 const getPrice = (vehicle, dayNum, rentalDate, returnDate) => {
+console.log(vehicle)    
     var wdays = getWdays(vehicle.partner.partner_weekdays, rentalDate, returnDate);
     var holis = getHolis(vehicle.partner.partner_holidays, rentalDate, returnDate);
     console.log("vehicle part holiday:", vehicle.partner.partner_holidays)
@@ -135,6 +138,7 @@ const getPrice = (vehicle, dayNum, rentalDate, returnDate) => {
     var holiExtraFee = getHoliExtraFee(vehicle) ? getHoliExtraFee(vehicle) : 0;
     var extraFee = wdayExtraFee * wdayNum + holiExtraFee * holiNum;
     var sumPrice = defaultPrice + extraFee;
+    console.log("$$$$$$$$", wdayExtraFee,wdayNum, holiExtraFee, holiNum, defaultPrice)
     return { sumPrice, extraFee, defaultPrice }
 }
 

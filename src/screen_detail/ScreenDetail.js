@@ -24,23 +24,13 @@ export default class ScreenDetail extends Component {
         this.setState({ redirectCustomer: true });
     }
 
-    caculatePrice = (vehicle) => {
-        var date_from = VarConf.get("home.date_from")
-        var date_to = VarConf.get("home.date_to")
-
-        if (date_from && date_to && vehicle) {
-            var dayNum = getDayNum(date_from, date_to);
-            var price_total = getPrice(vehicle, dayNum, date_from, date_to)
-            this.setState({ price_total: price_total })
-        }
-    }
-
     async componentDidMount() {
         window.scrollTo(0, 0);
-        var id = this.state.vehicle_id;
+        var id = this.state.vehicle_id, vhc;
         if (id) await VehicleApi.getVehicleById(id).then(
             vehicle => {
                 if (vehicle && vehicle.code === "success") {
+                    vhc = vehicle.data
                     reactLocalStorage.setObject("booking.vehicle", vehicle.data)
                     this.setState({ vehicle: vehicle.data })
                 } else if (vehicle && vehicle.code === "error") {
@@ -49,8 +39,22 @@ export default class ScreenDetail extends Component {
             }
         ).catch(err => console.log(err));
 
+        this.caculatePrice(vhc);
+
     }
 
+    caculatePrice = (vehicle) => {
+        var date_from = reactLocalStorage.get("home.date_from")
+        var date_to = reactLocalStorage.get("home.date_to")
+
+        if (date_from && date_to && vehicle) {
+            console.log(vehicle)
+            var dayNum = getDayNum(date_to, date_from);
+            var price_total = getPrice(vehicle, dayNum, date_to, date_from)
+            console.log(price_total)
+            this.setState({ price_total: price_total["sumPrice"] })
+        }
+    }
     render() {
 
         const { vehicle } = this.state;
@@ -193,7 +197,7 @@ export default class ScreenDetail extends Component {
                         </div>
                     </div>
                     <div className="mortgage">
-                       
+
                         <div className="mortgagetitle">
                             <p>Chú ý</p>
                         </div>
