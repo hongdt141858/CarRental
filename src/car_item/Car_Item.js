@@ -12,6 +12,14 @@ export default class Car_Item extends Component{
             vehicle : props.vehicle,
             redirectScreenDetail: false,
             redirectCustomer: false,
+            price_total: 0
+        }
+    }
+
+    async componentDidMount(){
+        var vehicle = this.props.vehicle
+        if(vehicle){
+            
         }
     }
 
@@ -53,7 +61,7 @@ export default class Car_Item extends Component{
                                 <img src="images/star.png"/>&nbsp;
                                 <img src="images/star.png"/>&nbsp;
                             </div>
-                            <p><b>{vehicle.vehicle_partner_default_price}</b></p>
+                            <p><b>{MyUtil.currencyFormat(vehicle.vehicle_partner_default_price)} VND</b></p>
                         </span>
                     </div>
                     <div className="name-car">
