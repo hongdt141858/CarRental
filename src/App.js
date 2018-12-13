@@ -15,6 +15,7 @@ import Change_Password from './change_password/Change_Password';
 import ListCar from './list_car/ListCar';
 import Customer from './customer/Customer';
 import Login from './login/Login';
+import Complete from './complete/Complete';
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
             <Route exact path="/change_password" component={() => <Change_Password/>} />
             <Route exact path="/customer" component={() => <Customer/>} />
             <Route exact path="/login" component={() => <Login />} />
+            <Route exact path="/complete" component={() => <Complete/>} />
             <Route path='/home/car_list/:city_id/:datetime_to/:datetime_from' component={ListCar} />
           </Switch>
 
