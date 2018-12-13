@@ -32,7 +32,7 @@ const VehicleApi = {
         // return db_vehicles;
     },
     getVehicleById: async (vehicle_partner_id) => {
-        let result = await MyService.getRequestData("/vehicle_partner/get-detail-vehicle-partner", { "vehicle_partner_id ": vehicle_partner_id });
+        let result = await MyService.getRequestData("/vehicle-partner/get-detail-vehicle-partner", { "vehicle_partner_id": vehicle_partner_id });
         return result
     }
 }

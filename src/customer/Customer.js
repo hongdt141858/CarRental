@@ -3,19 +3,95 @@ import { Redirect } from 'react-router';
 import './customer.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { reactLocalStorage } from 'reactjs-localstorage';
+import { email, required, phone } from '../api/validate';
 
 export default class Customer extends Component{
     constructor(props){
         super(props);
         this.state={
             redirectComplete: false,
+            userInfo: {
+                fullname: {
+                    value:  reactLocalStorage.get("customer_info.fullname", ""),
+                    error: ""
+                },
+                email: {
+                    value:  reactLocalStorage.get("customer_info.email", ""),
+                    error: ""
+                },
+                phone: {
+                    value:  reactLocalStorage.get("customer_info.phone", ""),
+                    error: ""
+                },
+                note: reactLocalStorage.get("customer_info.note", ""),
+            },
+            paymentId: reactLocalStorage.get("customer_info.payment", ""),
+            isClick: false,
+           
         }
+        this.vehicle = reactLocalStorage.getObject("booking.vehicle", null);
     }
 
     redirectComplete = () =>{
         this.setState({
             redirectComplete: true
         })
+    }
+
+    handleChangeFullname = (e) => {
+        var value = e.target.value;
+        var { userInfo, isClick, paymentId } = this.state;
+        userInfo.fullname.value = value;
+        userInfo.fullname.error = required(value)
+        isClick = this.check({ userInfo, paymentId })
+        this.setState({ userInfo, isClick });
+    }
+
+    handleChangePhone = (e) => {
+        var value = e.target.value;
+        var { userInfo, isClick, paymentId } = this.state;
+        userInfo.phone.value = value;
+        userInfo.phone.error = required(value) || phone(value)
+        isClick = this.check({ userInfo, paymentId })
+        this.setState({ userInfo, isClick });
+    }
+
+    handleChangeEmail = (e) => {
+        var value = e.target.value;
+        var { userInfo, isClick, paymentId } = this.state;
+        userInfo.email.value = value;
+        userInfo.email.error = required(value) || email(value)
+        isClick = this.check({ userInfo, paymentId })
+        this.setState({ userInfo, isClick });
+    }
+
+    handleChangeNote = (e) => {
+        var value = e.target.value;
+        var { userInfo, isClick, paymentId } = this.state;
+        userInfo.note = value;
+        isClick = this.check({ userInfo, paymentId })
+        this.setState({ userInfo, isClick });
+    }
+
+    save = () => {
+        var { userInfo, paymentId } = this.state;
+        console.log(this.state)
+        reactLocalStorage.set("customer_info.fullname", userInfo.fullname.value)
+        reactLocalStorage.set("customer_info.email", userInfo.email.value)
+        reactLocalStorage.set("customer_info.phone", userInfo.phone.value)
+        reactLocalStorage.set("customer_info.payment", paymentId)
+        reactLocalStorage.set("customer_info.note", userInfo.note)
+    }
+
+    check = (state) => {
+        var { userInfo, paymentId } = state;
+        if (!userInfo) return false;
+        if (!paymentId) return false;
+        if ((!userInfo.email) || (userInfo.email && (!userInfo.email.value)) || (userInfo.email && userInfo.email.value && userInfo.email.error)) return false
+        if ((!userInfo.fullname) || (userInfo.fullname && (!userInfo.fullname.value)) || (userInfo.fullname && userInfo.fullname.value && userInfo.fullname.error)) return false
+        if ((!userInfo.phone) || (userInfo.phone && (!userInfo.phone.value)) || (userInfo.phone && userInfo.phone.value && userInfo.phone.error)) return false
+        return true
     }
 
     render(){
@@ -35,7 +111,7 @@ export default class Customer extends Component{
                         <p>Họ và tên</p>
                     </div>
                     <div className="right-title">
-                        <input type="text" placeholder="Nhập họ tên"/>
+                        <input type="text" placeholder="Nhập họ tên" onChange={this.handleChangeFullname}/>
                     </div>
                 </div>
                 <div className="phone-cus">
@@ -43,7 +119,7 @@ export default class Customer extends Component{
                         <p>Số điện thoại</p>
                     </div>
                     <div className="right-title">
-                        <input type="number" placeholder="Nhập số điện thoại"/>
+                        <input type="number" placeholder="Nhập số điện thoại" onChange={this.handleChangePhone}/>
                     </div>
                 </div>
                 <div className="email-cus">
@@ -51,15 +127,7 @@ export default class Customer extends Component{
                         <p>Email</p>
                     </div>
                     <div className="right-title">
-                        <input type="text" placeholder="Nhập email"/>
-                    </div>
-                </div>
-                <div className="credit-cus">
-                    <div className="left-title">
-                        <p>Hình thức thanh toán</p>
-                    </div>
-                    <div className="right-title">
-                        <input type="text" placeholder="Chọn hình thức trả trước hoặc trả sau"/>
+                        <input type="text" placeholder="Nhập email" onChange={this.handleChangeEmail}/>
                     </div>
                 </div>
                 <div className="note-cus">
@@ -67,7 +135,7 @@ export default class Customer extends Component{
                         <p>Lưu ý</p>
                     </div>
                     <div className="right-title">
-                        <textarea type="text"/>
+                        <textarea type="text" onChange={this.handleChangeNote}/>
                     </div>
                 </div>
                 <div className="btn1">

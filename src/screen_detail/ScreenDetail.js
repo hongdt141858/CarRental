@@ -4,13 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Redirect } from 'react-router';
 import MyUtil from '../util/MyUtil';
+import VehicleApi from "../api/VehicleApi";
+import VarConf from '../VarConf';
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 export default class ScreenDetail extends Component{
     constructor(props){
         super(props);
         this.state = {
             redirectCustomer: false,
-            vehicle: null,
+            vehicle: {},
             vehicle_name: MyUtil.getVehicleName(props.match.params.name),
             vehicle_id: props.match.params.id
         }
@@ -19,19 +22,40 @@ export default class ScreenDetail extends Component{
     redirectCustomer = () => {
         this.setState({ redirectCustomer: true });
     }
+
+    async componentDidMount() {
+        window.scrollTo(0, 0);
+        var id = this.state.vehicle_id;
+        if (id) await VehicleApi.getVehicleById(id).then(
+            vehicle => {
+                if (vehicle && vehicle.code === "success") {
+                    reactLocalStorage.setObject("booking.vehicle", vehicle.data)
+                    this.setState({ vehicle: vehicle.data })
+                } else if (vehicle && vehicle.code === "error"){
+                    alert(vehicle.message)
+                }
+            }
+        ).catch(err => console.log(err));
+
+    }
     
     render(){
 
+        const { vehicle } = this.state;
+        var date_to = MyUtil.getDatetimeFormatEn( new Date(reactLocalStorage.get(VarConf.home.date_to)));
+        var date_from = MyUtil.getDatetimeFormatEn( new Date(reactLocalStorage.get(VarConf.home.date_from)));
         if (this.state.redirectCustomer) {
             return <Redirect push to={"/customer" } />;
         }
+        if(!vehicle["vehicle"])
+        return <div></div>
 
         return(
             <div className="con-screenDetail">
                 <div className="left-screen">
                 <img className="img-responsive _3Y67O" src="https://storage.googleapis.com/tripx-e955f.appspot.com/images%2Fbig_android_vehicle_15437984156662.jpeg?GoogleAccessId=firebase-adminsdk-tji53@tripx-e955f.iam.gserviceaccount.com&amp;Expires=16730323200&amp;Signature=onyjwfEtbyqEw7gFkCXn7au58bsXynfJbqcBQxwQGERTXb5cUGV2i9UiTr7CC0on4POzCOC0gmtcR4wEzb8vhSefukbPo1vOR4l36hxmNMfeBdtrGdbBykdxLQaIUmAbNOyIWbhdwPCkupuf4q5%2FMJfkFQcjoN5bI9h24JhGfMdbBOv%2FpMMw4np05IGyVslpWvHs0RaorBCFp6t8k1aeX0OEkb6Ovinguy5dv%2BX4F7leORMhFNdh6%2FIM2xMJwN8m1naPAeiz3w97Ta0O9diYHyf%2Fd8ScUXY8r%2BGcFVKTmHmNQJiAhnnSC6jVfxYhdrjXgCGNoQa75rQspAPGjZkRqQ%3D%3D&amp;rdt=1543798422456" alt="image"/>
                 <div className="comment">
-                    <p className="name-car"><b>2017 Madza Madza 3</b></p>
+                    <p className="name-car"><b>{this.state.vehicle_name}</b></p>
                     <div className="vote">
                         <img src="images/star_yellow.png"/>
                         <img src="images/star_yellow.png"/>
@@ -44,46 +68,46 @@ export default class ScreenDetail extends Component{
                     <div className="paraleft">
                         <div className="paraleft1">
                             <img src="images/brand1.png"/>
-                            <p>Madza</p>
+                            <p>{vehicle["vehicle"]["brand_name"]}</p>
                         </div>
                         <div className="paraleft2">
                             <img src="images/box.png"/>
-                            <p>Số tự động</p>
+                            <p>{vehicle["vehicle"]["transmission_name"]}</p>
                         </div>
                         <div className="paraleft3">
                             <img src="images/seat.png"/>
-                            <p>5 chỗ</p>
+                            <p>{vehicle["vehicle"]["seat_number"]} chỗ</p>
                         </div>
                     </div>
                     <div className="paracenter">
                     <div className="paracenter1">
                             <img src="images/brand2.png"/>
-                            <p>Madza 3</p>
+                            <p>{vehicle["vehicle"]["model_name"]}</p>
                         </div>
                         <div className="paracenter2">
                             <img src="images/fuel.png"/>
-                            <p>Động cơ xăng</p>
+                            <p>Động cơ {vehicle["vehicle"]["fuel_name"]}</p>
                         </div>
                         <div className="paracenter3">
                             <img src="images/seden.png"/>
-                            <p>Sedan</p>
+                            <p>{vehicle["vehicle"]["design_name"]}</p>
                         </div>
                     </div>
                     <div className="pararight">
                     <div className="pararight1">
                             <img src="images/year.png"/>
-                            <p>Động cơ xăng</p>
+                            <p>{vehicle["vehicle"]["fuel_consumption"]}</p>
                         </div>
                         <div className="pararight2">
                             <img src="images/lit.png"/>
-                            <p>Sedan</p>
+                            <p>{vehicle["vehicle"]["engin_number"]}</p>
                         </div>
                     </div>
                 </div>
                 </div>
                 <div className="right-screen">
-                    <div className="price">
-                        <p><b>900.000 đ/ngày</b></p>
+                    <div className="price" style={{textAlign: "center"}}>
+                        <h1>{vehicle["vehicle_partner_default_price"]} VND</h1>
                     </div>
                     <div className="date">
                         <div className="dateleft">
@@ -91,7 +115,7 @@ export default class ScreenDetail extends Component{
                                 <p>Nhận xe</p>
                             </div>
                             <div className="dateleft2">
-                                <p>11/12  21:00</p>
+                                <p>{date_to}</p>
                             </div>
                             
                         </div>
@@ -103,7 +127,7 @@ export default class ScreenDetail extends Component{
                                 <p>Trả xe</p>
                             </div>
                             <div className="dateright2">
-                                <p>12/12  20:00</p>
+                                <p>{date_from}</p>
                             </div>
                             
                         </div>
@@ -117,7 +141,7 @@ export default class ScreenDetail extends Component{
                                 <p className="price11">Giá ngày thường x1</p>
                             </div>
                             <div className="price12">
-                                <p className="price12">900.000đ</p>
+                                <p className="price12">{vehicle["vehicle_partner_default_price"]}đ</p>
                             </div>
                         </div>
                         <div className="price2">

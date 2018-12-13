@@ -9,6 +9,7 @@ module.exports = {
         brand:"booking.brand",
         seat_filter:"booking.seat_filter",
         tms_filter:"booking.tms_filter",
+        vehicle: "booking.vehicle",
     },
     range_price:{
         price_from: "vehicles.price_from",
