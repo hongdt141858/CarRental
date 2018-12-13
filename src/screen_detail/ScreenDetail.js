@@ -69,6 +69,8 @@ export default class ScreenDetail extends Component {
             var price_total = getPrice(vehicle, dayNum, date_to, date_from)
             console.log(price_total)
             this.setState({ price_total: price_total["sumPrice"] })
+            reactLocalStorage.set(VarConf.booking.total_price, price_total["sumPrice"]);
+            reactLocalStorage.set(VarConf.booking.total_day, dayNum);
         }
     }
     render() {
