@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router';
 import './customer.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default class Customer extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.state={
+            redirectComplete: false,
+        }
     }
+
+    redirectComplete = () =>{
+        this.setState({
+            redirectComplete: true
+        })
+    }
+
     render(){
+
+        if(this.state.redirectComplete){
+            return <Redirect push to={"/complete"} />;
+        }
         return (
             <div className="big-container">
                 <div className="customer-container">
@@ -56,7 +71,7 @@ export default class Customer extends Component{
                     </div>
                 </div>
                 <div className="btn1">
-                    <button>Xác nhận</button>
+                    <button onClick={this.redirectComplete}>Xác nhận</button>
                 </div>
                 <div className="btn2">
                     <button>Quay lại</button>
