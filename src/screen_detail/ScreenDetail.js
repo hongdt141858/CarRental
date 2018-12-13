@@ -16,12 +16,28 @@ export default class ScreenDetail extends Component {
             redirectCustomer: false,
             vehicle: {},
             vehicle_name: MyUtil.getVehicleName(props.match.params.name),
-            vehicle_id: props.match.params.id
+            vehicle_id: props.match.params.id,
+            total_day: "",
+            total_price: "",
         }
     }
 
     redirectCustomer = () => {
         this.setState({ redirectCustomer: true });
+    }
+
+    caculatePrice = (vehicle) => {
+        var date_from = VarConf.get("home.date_from")
+        var date_to = VarConf.get("home.date_to")
+
+        if (date_from && date_to && vehicle) {
+            var dayNum = getDayNum(date_from, date_to);
+            var price_total = getPrice(vehicle, dayNum, date_from, date_to)
+            this.setState({ price_total: price_total })
+            reactLocalStorage.set(VarConf.booking.total_price, price_total);
+            reactLocalStorage.set(VarConf.booking.total_day, dayNum);
+        }
+        
     }
 
     async componentDidMount() {
@@ -174,7 +190,7 @@ export default class ScreenDetail extends Component {
                                 <p className="price31">Tổng số tiền phải trả</p>
                             </div>
                             <div className="price32">
-                                <p className="price32" >{this.state.price_total}</p>
+                                <p className="price32" >{this.state.price_total} đ</p>
                             </div>
                         </div>
                     </div>
