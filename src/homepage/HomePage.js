@@ -25,6 +25,7 @@ class HomePage extends Component {
             dateTo: new Date(reactLocalStorage.get(VarConf.home.date_to)),
             dateFrom: new Date(reactLocalStorage.get(VarConf.home.date_from)),
             cities: [],
+            city: reactLocalStorage.get(VarConf.home.city),
         }
     }
 
@@ -67,7 +68,7 @@ class HomePage extends Component {
             city: event.target.value,
             
         });
-        reactLocalStorage.set(VarConf.home.city,event.target.value);
+        reactLocalStorage.set(VarConf.home.city ,event.target.value);
     }
 
     render() {

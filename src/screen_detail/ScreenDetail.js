@@ -2,12 +2,26 @@ import React, {Component} from 'react';
 import './screen_detail.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Redirect } from 'react-router';
 
 export default class ScreenDetail extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.state = {
+            redirectCustomer: false,
+        }
     }
+
+    redirectCustomer = () => {
+        this.setState({ redirectCustomer: true });
+    }
+    
     render(){
+
+        if (this.state.redirectCustomer) {
+            return <Redirect push to={"/customer" } />;
+        }
+
         return(
             <div className="con-screenDetail">
                 <div className="left-screen">
@@ -168,7 +182,7 @@ export default class ScreenDetail extends Component{
                         
                     </div>
                     <div className="btn">
-                        <button className="btn-primary">Gửi yêu cầu thuê xe</button>
+                        <button className="btn-primary" onClick={this.redirectCustomer}>Gửi yêu cầu thuê xe</button>
                     </div>
                 </div>
             </div>

@@ -4,3 +4,32 @@
 .date_fix div div div .react-datetime-picker__inputGroup__input{
     color: black !important;
 }
+.datetimepicker-inline {
+    width: 315px;
+}
+.title_price_range{
+    font-family: 'Montserrat';
+    padding-top: 5px;
+    font-size: 16px;
+    vertical-align: center;
+    margin: 0 auto
+}
+.rc-slider-track{
+    background-color: #107d82 !important;
+}
+.rc-slider-handle{
+    border: solid 2px #107d82 !important;
+
+}
+.rc-slider-handle:active{
+    box-shadow: #107d82 !important
+
+}
+.left-info .input-form.select-box.xe select:invalid
+{
+    color: #bcbcbc;
+}
+div.price p{
+    font-size: 18px;
+    float: left;
+}

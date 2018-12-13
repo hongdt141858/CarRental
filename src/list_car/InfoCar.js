@@ -11,6 +11,9 @@ import CityApi from '../api/CityApi';
 import BrandApi from '../api/BrandApi';
 import SeatApi from '../api/SeatApi';
 import TransmissionApi from '../api/TransmissionApi';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+const Range = Slider.Range;
 
 let brandGlobal = { "brand_id": 0, "brand_name": "Tất cả" }
 let seatGlobal = { "seat_id": 0, "seat_number": "Tất cả" }
@@ -33,7 +36,9 @@ export default class InfoCar extends Component {
             seats: [],
             tmss: [],
             brands: [],
-
+            price: MyUtil.rangePrice(0, 1500000),
+            price_from: 0,
+            price_to: 1500000
         }
     }
 
@@ -44,8 +49,8 @@ export default class InfoCar extends Component {
         })
 
         await this.handleData();
-        // reactLocalStorage.set("vehicles.price_from", 0)
-        // reactLocalStorage.set("vehicles.price_to", 3000000)
+        reactLocalStorage.set("vehicles.price_from", 0)
+        reactLocalStorage.set("vehicles.price_to", 3000000)
     }
 
     handleData = async () => {
@@ -90,6 +95,7 @@ export default class InfoCar extends Component {
     handleSelectCity = async (e) => {
         reactLocalStorage.set("home.city", e.target.value)
         this.setState({ city: e.target.value })
+        await this.props.onChangeListVehicle();
     }
 
     onChangeBrand = async (event) => {
@@ -101,7 +107,7 @@ export default class InfoCar extends Component {
         this.setState({ brandId: value[0]["brand_id"], brandName: value[0]["brand_name"] })
 
         reactLocalStorage.set("booking.brand", value[0]["brand_id"])
-        // await this.props.onChangeListVehicle();
+        await this.props.onChangeListVehicle();
     }
 
     onChangeSeat = async (event) => {
@@ -113,7 +119,7 @@ export default class InfoCar extends Component {
         if (value[0])
             this.setState({ seatId: value[0]["seat_id"], seatNum: value[0]["seat_number"] })
         reactLocalStorage.set("booking.seat_filter", value[0]["seat_id"])
-        // await this.props.onChangeListVehicle();
+        await this.props.onChangeListVehicle();
     }
 
     onChangeTransmission = async (event) => {
@@ -124,8 +130,24 @@ export default class InfoCar extends Component {
 
         this.setState({ tmsId: value[0]["transmission_id"], tmsName: value[0]["transmission_name"] })
         reactLocalStorage.set("booking.tms_filter", value[0]["transmission_id"])
-        // await this.props.onChangeListVehicle();
+        await this.props.onChangeListVehicle();
     }
+
+    onChangePrice = async (value) => {
+        var price_from = value[0] * 15000;
+        var price_to = value[1] * 15000;
+
+        this.setState({ price: MyUtil.rangePrice(price_from, price_to) })
+        reactLocalStorage.set("vehicles.price_from", price_from)
+        reactLocalStorage.set("vehicles.price_to", price_to)
+
+    }
+
+    onAfterChange = async () => {
+        reactLocalStorage.get()
+        await this.props.onChangeListVehicle()
+    }
+
 
     render() {
         var cities = this.state.cities;
@@ -135,7 +157,7 @@ export default class InfoCar extends Component {
                     <div className="input-form select-box">
                         <br />
                         <p>Thành phố</p>
-                        <select className="form-control" value={this.state.city} onChange={this.handleSelectCity}>
+                        <select className="form-control" value={this.state.city} onChange={this.handleSelectCity.bind(this)}>
                             {this.state.cities && cities.map(city => (
                                 <option key={city.city_id} value={city.city_id}>{city.city_name}</option>
                             ))}
@@ -193,6 +215,20 @@ export default class InfoCar extends Component {
                                             <option value={br.brand_name} key={br.brand_id}>{br.brand_name}</option>
                                         )}
                         </select>
+                    </div>
+                    <div className="shadow p-md pr-xlg" style={{    marginTop: "30px",backgroundColor: "#fff",borderRadius: "4px",padding: "10px"}}>
+                        <div className="widget-sidebar widget-price">
+                            <div className="widget-content">
+                                
+                                <p>Giá</p>
+                                <form action="#" method="get" acceptCharset="utf-8">
+                                    <div className="price search-filter-input">
+                                        <Range allowCross={false} defaultValue={[0, 3000000]} onChange={this.onChangePrice} onAfterChange={this.onAfterChange} />
+                                        <p className="title_price_range">{this.state.price} </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

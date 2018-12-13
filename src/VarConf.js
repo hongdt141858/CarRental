@@ -10,4 +10,15 @@ module.exports = {
         seat_filter:"booking.seat_filter",
         tms_filter:"booking.tms_filter",
     },
+    range_price:{
+        price_from: "vehicles.price_from",
+        price_to: "vehicles.price_to"
+    },
+    customer_info: {
+        fullname: "customer_info.fullname",
+        email: "customer_info.email",
+        phone: "customer_info.phone",
+        payment: "customer_info.payment",
+        note: "customer_info.note"
+    },
 }

@@ -9,6 +9,7 @@ export default class Car_Item extends Component{
         super(props);
         this.state = {
             redirectScreenDetail: false,
+            redirectCustomer: false,
         }
     }
 
@@ -16,10 +17,18 @@ export default class Car_Item extends Component{
         this.setState({ redirectScreenDetail: true });
     }
 
+    redirectCustomer = () => {
+        this.setState({ redirectCustomer: true });
+    }
+
     render(){
 
         if (this.state.redirectScreenDetail) {
             return <Redirect push to={"/screen_detail" } />;
+        }
+
+        if (this.state.redirectCustomer) {
+            return <Redirect push to={"/customer" } />;
         }
 
         return(
