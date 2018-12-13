@@ -10,6 +10,8 @@ module.exports = {
         seat_filter:"booking.seat_filter",
         tms_filter:"booking.tms_filter",
         vehicle: "booking.vehicle",
+        total_day: "booking.total_day",
+        total_price: "booking.total_price",
     },
     range_price:{
         price_from: "vehicles.price_from",

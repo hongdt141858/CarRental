@@ -125,6 +125,8 @@ export default class Customer extends Component {
         const vehicle = reactLocalStorage.getObject("booking.vehicle", null);
         var date_to = MyUtil.getDatetimeFormatEn( new Date(reactLocalStorage.get(VarConf.home.date_to)));
         var date_from = MyUtil.getDatetimeFormatEn( new Date(reactLocalStorage.get(VarConf.home.date_from)));
+        var day_total = reactLocalStorage.get(VarConf.booking.total_day);
+        var total_price = reactLocalStorage.get(VarConf.booking.total_price);
 
         console.log("dshad" + this.state.userInfo.fullname.value);
         if (this.state.redirectComplete) {
@@ -245,7 +247,7 @@ export default class Customer extends Component {
                         </div>
                         <div className="value2">
                             <p className="value21">Ngày</p>
-                            <p className="value22"><b>2 ngày</b></p>
+                            <p className="value22"><b>{day_total}</b></p>
                         </div>
                     </div>
                     <div className="line-price">
@@ -253,7 +255,7 @@ export default class Customer extends Component {
                     </div>
                     <div className="sumprice">
                         <p className="price1">TỔNG</p>
-                        <p className="price2">120.000 đ</p>
+                        <p className="price2">{total_price} đ</p>
                     </div>
                 </div>
 
