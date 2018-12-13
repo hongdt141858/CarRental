@@ -7,12 +7,15 @@ import { reactLocalStorage } from 'reactjs-localstorage';
 import { email, required, phone } from '../api/validate';
 import Header from '../header/Header';
 import BookingApi from '../api/BookingApi';
+import MyUtil from "../util/MyUtil";
+import VarConf from '../VarConf';
 
 export default class Customer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             redirectComplete: false,
+
             userInfo: {
                 fullname: {
                     value: reactLocalStorage.get("customer_info.fullname", ""),
@@ -119,6 +122,9 @@ export default class Customer extends Component {
 
     render() {
         const { userInfo, paymentId, isClick } = this.state
+        const vehicle = reactLocalStorage.getObject("booking.vehicle", null);
+        var date_to = MyUtil.getDatetimeFormatEn( new Date(reactLocalStorage.get(VarConf.home.date_to)));
+        var date_from = MyUtil.getDatetimeFormatEn( new Date(reactLocalStorage.get(VarConf.home.date_from)));
 
         console.log("dshad" + this.state.userInfo.fullname.value);
         if (this.state.redirectComplete) {
@@ -186,7 +192,6 @@ export default class Customer extends Component {
                             <textarea
                                 type="text"
                                 onChange={this.handleChangeNote}
-                                onChange={this.handleChangeNote}
                                 value={userInfo.note}
                                 style={{ height: "100px !important" }}
                             />
@@ -204,7 +209,7 @@ export default class Customer extends Component {
                         <img src="images/vehicle.png" />
                     </div>
                     <div className="namecar">
-                        <p>HYUNDAI I10 HATCHBACK 1.0 AT 2018</p>
+                        <p>{vehicle.vehicle_partner_name}</p>
                     </div>
                     <div className="pickup">
                         <div className="title">
@@ -219,7 +224,7 @@ export default class Customer extends Component {
                             <p className="title">THỜI GIAN</p>
                         </div>
                         <div className="value">
-                            <p className="value">20:30 13/12/2018 - 19:00 14/12/2018</p>
+                            <p className="value">{date_to} - {date_from}</p>
                         </div>
                     </div>
                     <div className="limittrip">
@@ -236,7 +241,7 @@ export default class Customer extends Component {
                         </div>
                         <div className="value1">
                             <p className="value11">Đơn giá ngày</p>
-                            <p className="value12"><b>600.000 đ</b></p>
+                            <p className="value12"><b>{vehicle.vehicle_partner_default_price} đ</b></p>
                         </div>
                         <div className="value2">
                             <p className="value21">Ngày</p>
