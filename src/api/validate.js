@@ -8,19 +8,19 @@ const validates = {
 };
 const required = (value) => {
     if (!value) {
-        return  <span className="form-error is-visible">Vui lòng nhập thông tin</span>
+        return  <span className="form-error is-visible" style={{color:"red"}}>Vui lòng nhập thông tin</span>
     } else  return ""
 };
 
 const email = (value) => {
     if (!isEmail(value)) {
-        return <span className="form-error is-visible">Vui lòng nhập đúng định dạng</span>;
+        return <span className="form-error is-visible" style={{color:"red"}}>Vui lòng nhập đúng định dạng</span>;
     } else return false
 };
 
 const phone = (value) => {
     if (!isPhone(value)) {
-        return <span className="form-error is-visible">Vui lòng nhập đúng định dạng</span>;
+        return <span className="form-error is-visible" style={{color:"red"}}>Vui lòng nhập đúng định dạng</span>;
     } return false
 };
 

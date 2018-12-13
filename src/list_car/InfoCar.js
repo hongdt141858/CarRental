@@ -98,6 +98,20 @@ export default class InfoCar extends Component {
         await this.props.onChangeListVehicle();
     }
 
+    onChangeStartDate = date => {
+        reactLocalStorage.set(VarConf.home.date_to, new Date(date));
+        this.setState({ 
+            date_to: new Date(date) 
+        });
+    }
+
+    onChangeEndDate = date => {
+        reactLocalStorage.set(VarConf.home.date_from, new Date(date));
+        this.setState({ 
+            date_from: new Date(date) 
+        });
+    }
+
     onChangeBrand = async (event) => {
 
         var value = this.state.brands.filter(function (item) {
@@ -181,7 +195,7 @@ export default class InfoCar extends Component {
                         <div className="date_fix">
                             <DateTimePicker
                                 className="form-control"
-                                onChange={this.onChangeStartDate}
+                                onChange={this.onChangeEndDate}
                                 value={new Date(this.state.date_from)}
                             />
                         </div>
