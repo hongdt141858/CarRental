@@ -17,6 +17,7 @@ export default class ListCar extends Component {
     constructor(props) {
         super(props);
         this.state={
+            start: false,
             vehicles: [],
             cityId: props.match.params.city_id,
             rentalDate: props.match.params.datetime_to,

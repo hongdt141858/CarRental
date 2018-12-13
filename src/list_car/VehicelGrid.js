@@ -23,7 +23,7 @@ export default class ListCar extends Component {
             <div >
                 {this.state.vehicles && this.state.vehicles.map(vehicle =>
                     <div style={{ margin: "5px", float: "left" }}>
-                        <Car_Item />
+                        <Car_Item vehicle={vehicle}/>
                     </div>
                 )}
             </div>

@@ -9,21 +9,21 @@ const VehicleApi = {
 
 
         var request = {
-            rental_date: reactLocalStorage.get("booking.rental_date"),
-            return_date: reactLocalStorage.get("booking.return_date"),
+            rental_date: reactLocalStorage.get("home.date_to"),
+            return_date: reactLocalStorage.get("home.date_from"),
             city_id: reactLocalStorage.get("home.city"),
             price_from: reactLocalStorage.get("vehicles.price_from", 0),
             price_to: reactLocalStorage.get("vehicles.price_to", 1500000)
         };
 
         if (vhc_seat_id)
-            request["vhc_seat_id"] = vhc_seat_id
+            request["seat_id"] = vhc_seat_id
 
         if (vhc_bran_id)
-            request["vhc_bran_id"] = vhc_bran_id
+            request["brand_id"] = vhc_bran_id
 
         if (vhc_tms_id)
-            request["vhc_tms_id"] = vhc_tms_id
+            request["transmission_id"] = vhc_tms_id
 
 
         let value = await MyService.getRequestData("/vehicle-partner", request);

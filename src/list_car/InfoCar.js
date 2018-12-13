@@ -189,7 +189,7 @@ export default class InfoCar extends Component {
                     <div className="input-form select-box">
                         <br />
                         <p>Số chỗ</p>
-                        <select className="form-control" onChange={this.onChangeSeat} required value={this.state.seatNum}>
+                        <select className="form-control" onChange={this.onChangeSeat.bind(this)} required value={this.state.seatNum}>
                             <option value="" hidden>Chọn số chỗ </option>
                             {this.state.seats && this.state.seats.map(seat =>
                                 <option value={seat.seat_number} key={seat.seat_id}>{seat.seat_number} {seat.seat_id ? "chỗ" : ""}</option>

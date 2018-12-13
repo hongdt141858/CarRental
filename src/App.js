@@ -29,13 +29,13 @@ class App extends Component {
             <Route exact path="/car" component={() => <CarDetail />} />
             <Route exact path="/car_item" component={() => <Car_Item />} />
             <Route exact path="/footer" component={() => <Footer />} />
-            <Route exact path="/screen_detail" component={() => <ScreenDetail/>} />
             <Route exact path="/profile" component={() => <Profile/>} />
             <Route exact path="/change_password" component={() => <Change_Password/>} />
             <Route exact path="/customer" component={() => <Customer/>} />
             <Route exact path="/login" component={() => <Login />} />
             <Route exact path="/complete" component={() => <Complete/>} />
             <Route path='/home/car_list/:city_id/:datetime_to/:datetime_from' component={ListCar} />
+            <Route exact path="/chi-tiet-xe/:id/:name" component={ScreenDetail} />
           </Switch>
 
         </div>
