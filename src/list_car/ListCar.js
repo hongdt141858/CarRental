@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import Car_Item from '../car_item/Car_Item';
 import InfoCar from './InfoCar';
+import VehicelGrid from './VehicelGrid';
 import './listCar.css';
 
 export default class ListCar extends Component {
@@ -20,12 +22,7 @@ export default class ListCar extends Component {
                         <InfoCar />
                     </div>
                     <div className="list">
-                        <div style={{ margin: "5px", float: "left" }}>
-                            <Car_Item />
-                        </div>
-                        <div style={{ margin: "5px", float: "left" }}>
-                            <Car_Item />
-                        </div>
+                        <VehicelGrid />
                     </div>
                 </div>
             </div>

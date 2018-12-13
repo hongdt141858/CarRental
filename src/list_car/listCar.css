@@ -6,6 +6,7 @@
     padding-right: 5%;
 }
 .list{
+    padding-top: 60px;
     width: 70%;
     float: left;
     height: auto;
@@ -14,6 +15,7 @@
     width: 100%;
     position: absolute;
     background-color: #e8eaef;
+    height: auto;
 }
 .address{
     width: 300px;

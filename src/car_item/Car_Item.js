@@ -2,14 +2,28 @@ import React, {Component} from 'react';
 import './car_item.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Redirect } from 'react-router';
 
 export default class Car_Item extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.state = {
+            redirectScreenDetail: false,
+        }
     }
+
+    redirectScreenDetail = () => {
+        this.setState({ redirectScreenDetail: true });
+    }
+
     render(){
+
+        if (this.state.redirectScreenDetail) {
+            return <Redirect push to={"/screen_detail" } />;
+        }
+
         return(
-            <div className="car_item">
+            <div className="car_item" onClick={this.redirectScreenDetail}>
                 <div className="img-car">
                     <img src=" https://n1-pstg.mioto.vn/g/2018/09/04/14/M7zkITu97njAk7pNYhhESg.jpg"/>
                 </div>
