@@ -264,11 +264,11 @@ div.price1{
     height: 20%;
 }
 div.price11{
-    width: 80%;
+    width: 50%;
     float: left;
 }
 div.price12{
-    width: 20%;
+    width: 50%;
     float: right;
     text-align: right;
 }
