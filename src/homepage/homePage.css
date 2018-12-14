@@ -22,7 +22,7 @@ label.text-search{
 	font-size: 35px;
 	width: 100%;
 	text-align: center;
-	color: white;
+	color: #00A550;
 } 
 div.input-search{
 	width: 1070px;
@@ -34,7 +34,13 @@ div.input-search{
     background: rgba(0,0,0,.5);
     padding: 13px 25px;
 	color: #fff;
-	
+
+}
+div.city{
+	margin-left:15px;
+}
+div.start_date{
+	margin-left: 40px;
 }
 div.guide{
 	width: 100%;

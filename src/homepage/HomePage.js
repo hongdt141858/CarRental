@@ -115,21 +115,21 @@ class HomePage extends Component {
                                     {listcity}
                                 </select>
                             </div>
-                            <div className="start_date" style={{ float: "left", marginLeft: "20px" }}>
+                            <div className="start_date" style={{ float: "left" }}>
                                 <span>Ngày nhận: </span>
                                 <DateTimePicker
                                     onChange={this.onChangeStartDate}
                                     value={this.state.dateTo}
                                 />
                             </div>
-                            <div className="end_date" style={{ float: "left", marginLeft: "20px" }}>
+                            <div className="end_date" style={{ float: "left", marginLeft: "40px" }}>
                                 <span>Ngày trả: </span>
                                 <DateTimePicker
                                     onChange={this.onChangeEndDate}
                                     value={this.state.dateFrom}
                                 />
                             </div>
-                            <i className="zmdi zmdi-search" style={{ fontSize: "38px", float: "left", marginLeft: "20px" }} onClick={this.redirectListCar}></i>
+                            <i className="zmdi zmdi-search" style={{ fontSize: "38px", float: "left", marginLeft: "60px" }} onClick={this.redirectListCar}></i>
                         </div>
                     </div>
                 </div>
