@@ -23,7 +23,7 @@ export default class CarDetail extends Component{
                                 <img src="images/star.png"/>
                                 <img src="images/star.png"/>
                                 <img src="images/star.png"/>
-                                
+                    
                             </div>
                             <div className="gachnoi"></div>
                             <div className="num-trip"><p>0 chuyến</p></div>
