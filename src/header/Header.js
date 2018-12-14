@@ -12,6 +12,7 @@ class Header extends Component {
             redirectGuide: false,
             redirectSignIn: false,
             redirectHome: false,
+            redirectLogin: false,
         }
     }
 
@@ -63,6 +64,10 @@ class Header extends Component {
         this.setState({ redirectHome: true });
     }
 
+    redirectLogin = () => {
+        this.setState({ redirectLogin: true });
+    }
+
 
     render() {
         if (this.state.redirectGuide) {
@@ -73,6 +78,9 @@ class Header extends Component {
         }
         if (this.state.redirectHome) {
             return <Redirect push to="/" />;
+        }
+        if (this.state.redirectLogin) {
+            return <Redirect push to="/login" />;
         }
 
         return (
@@ -94,7 +102,10 @@ class Header extends Component {
                             </span>
                             <span className="nav-a"
                                 style={{ color: (this.state.hoverLogin ? "#fff" : "#000") }}
-                                onMouseEnter={this.handleLoginHoverOn} onMouseLeave={this.handleLoginHoverOff}>Đăng nhập
+                                onMouseEnter={this.handleLoginHoverOn} 
+                                onMouseLeave={this.handleLoginHoverOff}
+                                onClick={this.redirectLogin}
+                                >Đăng nhập
                                 </span>
                             <span className="nav-a nav-dangky"
                                 style={{ color: (this.state.hoverSignIn ? "#fff" : "#000") }}

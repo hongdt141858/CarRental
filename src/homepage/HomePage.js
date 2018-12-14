@@ -13,7 +13,7 @@ import CarDetail from '../car_detail/CarDetail';
 import DateTimePicker from 'react-datetime-picker';
 import Header from '../header/Header';
 import MyUtil from '../util/MyUtil';
-
+import VehicleApi from '../api/VehicleApi';
 import CityApi from '../api/CityApi';
 
 
@@ -25,6 +25,8 @@ class HomePage extends Component {
             dateTo: new Date(reactLocalStorage.get(VarConf.home.date_to)),
             dateFrom: new Date(reactLocalStorage.get(VarConf.home.date_from)),
             cities: [],
+            city: reactLocalStorage.get(VarConf.home.city),
+            vehicles: [],
         }
     }
 
@@ -33,11 +35,20 @@ class HomePage extends Component {
         await CityApi.getAll().then(data => {
             reactLocalStorage.setObject("home.cities", data);
             if (this.mounted) this.setState({ cities: data });
-            
+
         })
-        reactLocalStorage.set(VarConf.home.city,1);
+        reactLocalStorage.set(VarConf.home.city, 1);
         reactLocalStorage.set(VarConf.home.date_to, new Date());
         reactLocalStorage.set(VarConf.home.date_from, new Date());
+    }
+
+    async componentDidMount() {
+        window.scrollTo(0, 0);
+        reactLocalStorage.set("home.brand", 0)
+
+        let value = await VehicleApi.getVehicles();
+
+        this.setState({ vehicles: value ? value.data : [] })
     }
 
     componentWillUnmount() {
@@ -50,24 +61,24 @@ class HomePage extends Component {
 
     onChangeStartDate = date => {
         reactLocalStorage.set(VarConf.home.date_to, new Date(date));
-        this.setState({ 
-            dateTo: new Date(date) 
+        this.setState({
+            dateTo: new Date(date)
         });
     }
 
     onChangeEndDate = date => {
         reactLocalStorage.set(VarConf.home.date_from, new Date(date));
-        this.setState({ 
-            dateFrom: new Date(date) 
+        this.setState({
+            dateFrom: new Date(date)
         });
     }
 
     onChangeCity = (event) => {
         this.setState({
             city: event.target.value,
-            
+
         });
-        reactLocalStorage.set(VarConf.home.city,event.target.value);
+        reactLocalStorage.set(VarConf.home.city, event.target.value);
     }
 
     render() {
@@ -86,11 +97,11 @@ class HomePage extends Component {
             slidesToScroll: 1
         };
 
-        var city = this.state.cities ? this.state.cities :[]
+        var city = this.state.cities ? this.state.cities : []
         const listcity = this.state.cities.map((item) =>
             <option value={item.city_id}>{item.city_name}</option>
-       );
-        
+        );
+
         return (
             <div>
                 <Header />
@@ -118,7 +129,7 @@ class HomePage extends Component {
                                     value={this.state.dateFrom}
                                 />
                             </div>
-                            <i className="zmdi zmdi-search" style={{ fontSize: "38px", float:"left", marginLeft: "20px"}} onClick={this.redirectListCar}></i>
+                            <i className="zmdi zmdi-search" style={{ fontSize: "38px", float: "left", marginLeft: "20px" }} onClick={this.redirectListCar}></i>
                         </div>
                     </div>
                 </div>
@@ -151,7 +162,7 @@ class HomePage extends Component {
                 <div className="famous-car" >
                     <h1>Xe nổi bật </h1>
                     <Slider {...settings} >
-                        <div className="slide" >
+                        {/* <div className="slide" >
                             <CarDetail />
                         </div>
                         <div className="slide" >
@@ -165,7 +176,12 @@ class HomePage extends Component {
                         </div>
                         <div className="slide" >
                             <CarDetail />
-                        </div>
+                        </div> */}
+                        {this.state.vehicles && this.state.vehicles.map(vehicle =>
+                            <div  className="slide">
+                                <CarDetail vehicle={vehicle}/>
+                            </div>
+                        )}
                     </Slider>
                 </div>
                 <Footer />

@@ -212,7 +212,7 @@ div.dateleft2{
 }
 div.dateleft2 p{
     color: #B1B1B1;
-    font-size: 25px;
+    font-size: 18px;
 }
 div.centerDate{
     width: 1px;
@@ -242,7 +242,7 @@ div.dateright2{
 }
 div.dateright2 p{
     color: #B1B1B1;
-    font-size: 25px;
+    font-size: 18px;
 }
 div.trip-detail{
     width: 90%;
@@ -264,12 +264,13 @@ div.price1{
     height: 20%;
 }
 div.price11{
-    width: 80%;
+    width: 50%;
     float: left;
 }
 div.price12{
-    width: 20%;
-    float: left;
+    width: 50%;
+    float: right;
+    text-align: right;
 }
 div.price2{
     width: 100%;
@@ -283,6 +284,7 @@ div.price21{
 div.price22{
     width: 20%;
     float: left;
+    text-align: right;
 }
 div.price3{
     width: 100%;
@@ -296,6 +298,7 @@ div.price31{
 div.price32{
     width: 20%;
     float: left;
+    text-align: right;
 }
 div.paper{
     width: 90%;
