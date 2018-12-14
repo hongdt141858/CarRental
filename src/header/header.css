@@ -10,17 +10,18 @@ nav.occho{
 	background-color: #0f949a;
 }
 div.nav-ul{
-	margin-top: 10px;
+	height: 70px;
 }
 span.nav-a{
 	font-size: 18px;
 	color: black;
 	margin: 20px ;
 	margin-top: 5px;
-	margin-left: 50px;
+	margin-left: 40px;
 }
-label.nav-a{
-	margin-left: 40px ;
+img.nav-a{
+	margin-left: 20px ;
+	height: 80px;
 }
 span.nav-dangky{
 	margin-left: 60px;

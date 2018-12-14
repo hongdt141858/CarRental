@@ -88,7 +88,7 @@ class Header extends Component {
                 <header id="header">
                     <nav className="navbar navbar-dark bg-primary header occho">
                         <div className="nav-ul">
-                            <label className="nav-a" onClick={this.redirectHome}>LOGO</label>
+                            <img className="nav-a" onClick={this.redirectHome} src="images/logo3.png"/>
                             <span className="nav-a"><i className="zmdi zmdi-phone"></i> 0965143540</span>
                             <span className="nav-a"><i className="zmdi zmdi-email"></i>ducdt@gmail.com</span>
                             <span className="nav-a"><i className="zmdi zmdi-facebook"></i> Facebook</span>
