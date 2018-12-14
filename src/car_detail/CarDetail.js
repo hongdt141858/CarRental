@@ -30,7 +30,7 @@ export default class CarDetail extends Component{
         return(
             <div className="car-detail" onClick={this.redirectScreenDetail}>
                 <div className="img-car">
-                    <img src="https://n1-pstg.mioto.vn/cho_thue_xe_tu_lai_tphcm/toyota_vios_2013/p/g/2018/11/03/17/79w1VJsrXgMTn5w1_Um7TQ.jpg"/>
+                    <img src={vehicle.vehicle.vehicle_images[0].image_link}/>
                     <div className="price-car">{vehicle.vehicle_partner_default_price}</div>
                 </div>
                 <div className="desc-car">

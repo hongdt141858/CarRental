@@ -87,7 +87,7 @@ export default class ScreenDetail extends Component {
         return (
             <div className="con-screenDetail">
                 <div className="left-screen">
-                    <img className="img-responsive _3Y67O" src="https://storage.googleapis.com/tripx-e955f.appspot.com/images%2Fbig_android_vehicle_15437984156662.jpeg?GoogleAccessId=firebase-adminsdk-tji53@tripx-e955f.iam.gserviceaccount.com&amp;Expires=16730323200&amp;Signature=onyjwfEtbyqEw7gFkCXn7au58bsXynfJbqcBQxwQGERTXb5cUGV2i9UiTr7CC0on4POzCOC0gmtcR4wEzb8vhSefukbPo1vOR4l36hxmNMfeBdtrGdbBykdxLQaIUmAbNOyIWbhdwPCkupuf4q5%2FMJfkFQcjoN5bI9h24JhGfMdbBOv%2FpMMw4np05IGyVslpWvHs0RaorBCFp6t8k1aeX0OEkb6Ovinguy5dv%2BX4F7leORMhFNdh6%2FIM2xMJwN8m1naPAeiz3w97Ta0O9diYHyf%2Fd8ScUXY8r%2BGcFVKTmHmNQJiAhnnSC6jVfxYhdrjXgCGNoQa75rQspAPGjZkRqQ%3D%3D&amp;rdt=1543798422456" alt="image" />
+                    <img className="img-responsive _3Y67O" src={vehicle["vehicle"]["vehicle_images"][0]["image_link"]} alt="image" />
                     <div className="comment">
                         <p className="name-car"><b>{this.state.vehicle_name}</b></p>
                         <div className="vote">

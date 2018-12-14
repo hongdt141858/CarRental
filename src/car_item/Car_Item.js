@@ -45,11 +45,12 @@ export default class Car_Item extends Component{
         if (this.state.redirectCustomer) {
             return <Redirect push to={"/customer" } />;
         }
+        // console.log(vehicle.vehicle.vehicle_images + "!11111111111111");
 
         return(
             <div className="car_item" onClick={this.redirectScreenDetail} key={vehicle.vehicle_partner_id}>
                 <div className="img-car">
-                    <img src=" https://n1-pstg.mioto.vn/g/2018/09/04/14/M7zkITu97njAk7pNYhhESg.jpg"/>
+                    <img src={vehicle.vehicle.vehicle_images[0].image_link}/>
                 </div>
                 <div className="desc-car">
                     <div className="rating">
