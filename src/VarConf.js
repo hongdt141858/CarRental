@@ -1,4 +1,10 @@
 module.exports = {
+    user: {
+        token: "user.token",
+        info:"user.info",
+        language: "user.language",
+        user_id: "user.user_id"
+    },
     home: {
         city : "home.city",
         cities: "home.cities",

@@ -1,6 +1,6 @@
 import React from 'react'
 import { isAlpha } from 'validator';
-import { i18next } from './i18n';
+// import { i18next } from './i18n';
 const validates = {
     maxLength: 8,
     minLengthPass: 6,
@@ -8,43 +8,43 @@ const validates = {
 };
 const required = (value) => {
     if (!value) {
-        return  <span className="form-error is-visible">{i18next.t('common:validate.required')}</span>
+        return  <span className="form-error is-visible" style={{color: "red"}}>Vui lòng nhập thông tin</span>
     } else  return ""
 };
 
 const email = (value) => {
     if (!isEmail(value)) {
-        return <span className="form-error is-visible">{i18next.t('common:validate.email')}</span>;
+        return <span className="form-error is-visible" style={{color: "red"}}>Vui lòng nhập đúng định dạng</span>;
     } else return false
 };
 
 const phone = (value) => {
     if (!isPhone(value)) {
-        return <span className="form-error is-visible">{i18next.t('common:validate.phone')}</span>;
+        return <span className="form-error is-visible" style={{color: "red"}}>Vui lòng nhập đúng định dạng</span>;
     } return false
 };
 
 const password = (value) => {
     if (value.toString().trim().length < validates.minLengthPass) {
-        return <span className="form-error is-visible">{i18next.t('common:validate.password')}</span>;
+        return <span className="form-error is-visible" style={{color: "red"}}>Mật khẩu phải trên 6 ký tự</span>;
     } return false
 };
 
 const emailAndPhone = (value) => {
-    if (phone(value) && email(value)) return <span className="form-error is-visible">{i18next.t('common:validate.email_phone')}</span>;
+    if (phone(value) && email(value)) return <span className="form-error is-visible" style={{color: "red"}}>Email/Số điện thoại không đúng</span>;
 }
 
 const confirmPassword = (confPass, newPass) => {
     if (confPass !== newPass) {
-        return <span className="form-error is-visible">{i18next.t('common:validate.confirm')}</span>;
+        return <span className="form-error is-visible" style={{color: "red"}}>Mật khẩu không đúng</span>;
     } else return false
 }
 
-const address = (value) => {
-    if (value.toString().trim().length < validates.minAddress) {
-        return <span className="form-error is-visible">{i18next.t('common:validate.required')}</span>;
-    } return false
-}
+// const address = (value) => {
+//     if (value.toString().trim().length < validates.minAddress) {
+//         return <span className="form-error is-visible">{i18next.t('common:validate.required')}</span>;
+//     } return false
+// }
 
 const isPhone = (phone) => {
     if (!phone) return false;
@@ -88,7 +88,7 @@ export {
     password,
     phone,
     emailAndPhone,
-    address,
+    // address,
     confirmPassword,
     isPhone,
     isEmail
