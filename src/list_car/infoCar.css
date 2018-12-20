@@ -15,14 +15,14 @@
     margin: 0 auto
 }
 .rc-slider-track{
-    background-color: #107d82 !important;
+    background-color: #007bff  !important;
 }
 .rc-slider-handle{
-    border: solid 2px #107d82 !important;
+    border: solid 2px #007bff  !important;
 
 }
 .rc-slider-handle:active{
-    box-shadow: #107d82 !important
+    box-shadow: #007bff  !important
 
 }
 .left-info .input-form.select-box.xe select:invalid

@@ -189,11 +189,12 @@ export default class Customer extends Component {
                             </div>
                         </div>
                         <div className="note-cus">
-                            <div className="left-title">
+                            <div className="left-title" >
                                 <p>Lưu ý</p>
                             </div>
                             <div className="right-title">
                                 <textarea
+                                    style={{ paddingLeft: "10px" }}
                                     type="text"
                                     onChange={this.handleChangeNote}
                                     value={userInfo.note}
@@ -209,10 +210,11 @@ export default class Customer extends Component {
                         </div>
                     </div>
                     <div className="des-vehicle">
-                        <div className="img-vehicle">
-                            <img src="/images/vehicle.png" />
+                        <div className="img-vehicle" style={{ marginTop: "0px" }}>
+                            <img src={vehicle["vehicle"]["vehicle_images"] ? vehicle["vehicle"]["vehicle_images"][0]["image_link"] : ""}
+                                style={{ width: "350px", height: "auto" }} />
                         </div>
-                        <div className="namecar">
+                        <div className="namecar" style={{ marginTop: "50px", marginLeft: "0px" }}>
                             <p>{vehicle.vehicle_partner_name}</p>
                         </div>
                         <div className="pickup">
@@ -239,17 +241,17 @@ export default class Customer extends Component {
                                 <p className="value">Tối đa 250km/ngày, phụ trội 3.000 đ/km</p>
                             </div>
                         </div>
-                        <div className="price">
+                        <div className="price" style={{ height: "104px" }}>
                             <div className="title-price">
                                 <p className="ti-price">CHI TIẾT GIÁ</p>
                             </div>
                             <div className="value1">
                                 <p className="value11">Đơn giá ngày</p>
-                                <p className="value12"><b>{vehicle.vehicle_partner_default_price} đ</b></p>
+                                <p className="value12"><b>{MyUtil.currencyFormat(vehicle.vehicle_partner_default_price)} đ</b></p>
                             </div>
                             <div className="value2">
                                 <p className="value21">Ngày</p>
-                                <p className="value22"><b>{day_total}</b></p>
+                                <p className="value22"><b>{day_total + " ngày"}</b></p>
                             </div>
                         </div>
                         <div className="line-price">
@@ -257,7 +259,7 @@ export default class Customer extends Component {
                         </div>
                         <div className="sumprice">
                             <p className="price1">TỔNG</p>
-                            <p className="price2">{total_price} đ</p>
+                            <p className="price2">{MyUtil.currencyFormat(total_price + "")} đ</p>
                         </div>
                     </div>
 
