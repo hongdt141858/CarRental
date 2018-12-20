@@ -11,7 +11,7 @@ export default class Profile extends Component{
         return(
             <div className="con-profile">
                 <div className="image-br">
-                    <img src="images/profile.png" />
+                    <img src="/images/profile.png" />
                 </div>
                 <div className="name-detail">
                     <div className="username">
@@ -19,7 +19,7 @@ export default class Profile extends Component{
                             <p><b>Đỗ Trí Đức</b></p>
                         </div>
                         <div className="edit-username">
-                            <img src="images/edit.png"/>
+                            <img src="/images/edit.png"/>
                         </div>
                     </div>
                     <div className="datetime">

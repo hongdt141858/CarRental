@@ -37,11 +37,11 @@ export default class CarDetail extends Component{
                     <div className="rating">
                         <span className="star">
                             <div className="star-rating">
-                                <img src="images/star_yellow.png"/>
-                                <img src="images/star_yellow.png"/>
-                                <img src="images/star.png"/>
-                                <img src="images/star.png"/>
-                                <img src="images/star.png"/>
+                                <img src="/images/star_yellow.png"/>
+                                <img src="/images/star_yellow.png"/>
+                                <img src="/images/star.png"/>
+                                <img src="/images/star.png"/>
+                                <img src="/images/star.png"/>
                     
                             </div>
                             <div className="gachnoi"></div>

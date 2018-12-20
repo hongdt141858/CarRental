@@ -56,11 +56,11 @@ export default class Car_Item extends Component{
                     <div className="rating">
                         <span className="star">
                             <div className="star-rating">
-                                <img src="images/star_yellow.png"/>&nbsp;
-                                <img src="images/star_yellow.png"/>&nbsp;
-                                <img src="images/star.png"/>&nbsp;
-                                <img src="images/star.png"/>&nbsp;
-                                <img src="images/star.png"/>&nbsp;
+                                <img src="/images/star_yellow.png"/>&nbsp;
+                                <img src="/images/star_yellow.png"/>&nbsp;
+                                <img src="/images/star.png"/>&nbsp;
+                                <img src="/images/star.png"/>&nbsp;
+                                <img src="/images/star.png"/>&nbsp;
                             </div>
                             <p><b>{MyUtil.currencyFormat(vehicle.vehicle_partner_default_price)} VND</b></p>
                         </span>
@@ -74,7 +74,7 @@ export default class Car_Item extends Component{
                                 <p>{vehicle.vehicle.seat_number} chỗ</p>
                         </div>
                         <div className="num-distance">
-                                <img src="images/distance.png"/>
+                                <img src="/images/distance.png"/>
                                 <p>{vehicle.vehicle.transmission_name}</p>
                         </div>
                     </div>

@@ -73,7 +73,7 @@ class Header extends Component {
 
     render() {
         var userInfo = reactLocalStorage.getObject("user.info", null);
-        var user_name = userInfo.user_account_name;
+        var user_name = userInfo ?userInfo.user_account_name : "";
         var is_login = reactLocalStorage.get(VarConf.home.is_login);
 
         if (this.state.redirectGuide) {
@@ -94,7 +94,7 @@ class Header extends Component {
                 <header id="header">
                     <nav className="navbar navbar-dark bg-primary header occho">
                         <div className="nav-ul">
-                            <img className="nav-a" onClick={this.redirectHome} src="images/logo3.png"/>
+                            <img className="nav-a" onClick={this.redirectHome} src="/images/logo3.png"/>
                             <span className="nav-a"><i className="zmdi zmdi-phone"></i> 0965143540</span>
                             <span className="nav-a"><i className="zmdi zmdi-email"></i>ducdt@gmail.com</span>
                             <span className="nav-a"><i className="zmdi zmdi-facebook"></i> Facebook</span>
