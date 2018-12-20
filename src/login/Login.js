@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { password, required, emailAndPhone } from '../util/validate';
 import { reactLocalStorage } from "reactjs-localstorage";
+import VarConf from '../VarConf';
 import UserApi from '../api/UserApi';
 import { Redirect } from 'react-router';
 
@@ -22,6 +23,7 @@ export default class Login extends Component {
             message: "",
             isClick: false,
             redirectSignUp: false,
+            redirectHome: false,
         }
     }
 
@@ -43,6 +45,10 @@ export default class Login extends Component {
             user = result.data;
             reactLocalStorage.setObject("user.info", user);
         } else alert("Lỗi kết nối mạng")
+        reactLocalStorage.set(VarConf.home.is_login, true);
+        this.setState({
+            redirectHome: true,
+        })
     };
 
     onChangeUsername = (e) => {
@@ -72,6 +78,9 @@ export default class Login extends Component {
 
     render() {
         if (this.state.redirectSignUp) {
+            return <Redirect push to={"/sign_in"} />;
+        }
+        if (this.state.redirectHome) {
             return <Redirect push to={"/sign_in"} />;
         }
         var { message, isClick, usernameInput, passwordInput } = this.state;

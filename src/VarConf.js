@@ -10,6 +10,7 @@ module.exports = {
         cities: "home.cities",
         date_to: "home.date_to",
         date_from: "home.date_from",
+        is_login: "home.is_login"
     },
     booking: {
         brand:"booking.brand",

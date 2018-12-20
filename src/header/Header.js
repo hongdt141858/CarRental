@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import './header.css';
+import { reactLocalStorage } from "reactjs-localstorage";
+import VarConf from '../VarConf';
 
 class Header extends Component {
     constructor(props) {
@@ -70,6 +72,10 @@ class Header extends Component {
 
 
     render() {
+        var userInfo = reactLocalStorage.getObject("user.info", null);
+        var user_name = userInfo.user_account_name;
+        var is_login = reactLocalStorage.get(VarConf.home.is_login);
+
         if (this.state.redirectGuide) {
             return <Redirect push to="/guide" />;
         }
@@ -100,18 +106,25 @@ class Header extends Component {
                                 <i className="zmdi zmdi-info-outline">
                                 </i> Hướng dẫn
                             </span>
+                            {
+                                is_login ?
+                            <span><i class="zmdi zmdi-account-circle"></i>{user_name}</span> :
+                            <span>
                             <span className="nav-a"
-                                style={{ color: (this.state.hoverLogin ? "#fff" : "#000") }}
-                                onMouseEnter={this.handleLoginHoverOn} 
-                                onMouseLeave={this.handleLoginHoverOff}
-                                onClick={this.redirectLogin}
-                                >Đăng nhập
-                                </span>
-                            <span className="nav-a nav-dangky"
-                                style={{ color: (this.state.hoverSignIn ? "#fff" : "#000") }}
-                                onMouseEnter={this.handleSignInHoverOn}
-                                onMouseLeave={this.handleSignInHoverOff}
-                                onClick={this.redirectSignIn}>Đăng ký</span>
+                            style={{ color: (this.state.hoverLogin ? "#fff" : "#000") }}
+                            onMouseEnter={this.handleLoginHoverOn} 
+                            onMouseLeave={this.handleLoginHoverOff}
+                            onClick={this.redirectLogin}
+                            >Đăng nhập
+                            </span>
+                           <span className="nav-a nav-dangky"
+                            style={{ color: (this.state.hoverSignIn ? "#fff" : "#000") }}
+                            onMouseEnter={this.handleSignInHoverOn}
+                            onMouseLeave={this.handleSignInHoverOff}
+                            onClick={this.redirectSignIn}>Đăng ký</span>
+                            </span>
+                            }
+                           
                         </div>
                     </nav>
                 </header>
