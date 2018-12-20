@@ -13,7 +13,7 @@
 }
 .body_screen{
     width: 100%;
-    position: absolute;
+    display: flex;
     background-color: #e8eaef;
     height: auto;
 }

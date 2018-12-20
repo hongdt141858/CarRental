@@ -64,6 +64,7 @@ export default class ListCar extends Component {
                         <VehicelGrid vehicles={this.state.vehicles} />
                     </div>
                 </div>
+                < Footer />
             </div>
         )
     }
