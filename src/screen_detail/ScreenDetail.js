@@ -91,49 +91,49 @@ export default class ScreenDetail extends Component {
                     <div className="comment">
                         <p className="name-car"><b>{this.state.vehicle_name}</b></p>
                         <div className="vote">
-                            <img src="images/star_yellow.png" />
-                            <img src="images/star_yellow.png" />
-                            <img src="images/star.png" />
-                            <img src="images/star.png" />
-                            <img src="images/star.png" />
+                            <img src="/images/star_yellow.png" />
+                            <img src="/images/star_yellow.png" />
+                            <img src="/images/star.png" />
+                            <img src="/images/star.png" />
+                            <img src="/images/star.png" />
                         </div>
                     </div>
                     <div className="parameter">
                         <div className="paraleft">
                             <div className="paraleft1">
-                                <img src="images/brand1.png" />
+                                <img src="/images/brand1.png" />
                                 <p>{vehicle["vehicle"]["brand_name"]}</p>
                             </div>
                             <div className="paraleft2">
-                                <img src="images/box.png" />
+                                <img src="/images/box.png" />
                                 <p>{vehicle["vehicle"]["transmission_name"]}</p>
                             </div>
                             <div className="paraleft3">
-                                <img src="images/seat.png" />
+                                <img src="/images/seat.png" />
                                 <p>{vehicle["vehicle"]["seat_number"]} chỗ</p>
                             </div>
                         </div>
                         <div className="paracenter">
                             <div className="paracenter1">
-                                <img src="images/brand2.png" />
+                                <img src="/images/brand2.png" />
                                 <p>{vehicle["vehicle"]["model_name"]}</p>
                             </div>
                             <div className="paracenter2">
-                                <img src="images/fuel.png" />
+                                <img src="/images/fuel.png" />
                                 <p>Động cơ {vehicle["vehicle"]["fuel_name"]}</p>
                             </div>
                             <div className="paracenter3">
-                                <img src="images/seden.png" />
+                                <img src="/images/seden.png" />
                                 <p>{vehicle["vehicle"]["design_name"]}</p>
                             </div>
                         </div>
                         <div className="pararight">
                             <div className="pararight1">
-                                <img src="images/year.png" />
+                                <img src="/images/year.png" />
                                 <p>{vehicle["vehicle"]["fuel_consumption"]}</p>
                             </div>
                             <div className="pararight2">
-                                <img src="images/lit.png" />
+                                <img src="/images/lit.png" />
                                 <p>{vehicle["vehicle"]["engin_number"]}</p>
                             </div>
                         </div>
@@ -202,15 +202,15 @@ export default class ScreenDetail extends Component {
                             <p>Xuất trình khi nhận xe</p>
                         </div>
                         <div className="paper1">
-                            <img src="images/check.png" />
+                            <img src="/images/check.png" />
                             <p>CMND/CCCD</p>
                         </div>
                         <div className="paper2">
-                            <img src="images/check.png" />
+                            <img src="/images/check.png" />
                             <p>Hộ khẩu/KT3</p>
                         </div>
                         <div className="paper3">
-                            <img src="images/check.png" />
+                            <img src="/images/check.png" />
                             <p>Bằng lái xe B1, B2</p>
                         </div>
                     </div>
@@ -229,11 +229,11 @@ export default class ScreenDetail extends Component {
                                 );
                         })}
                         {/* <div className="mortgage1">
-                            <img src="images/check.png" />
+                            <img src="/images/check.png" />
                             <p>Xe máy hoặc tiền mặt có trị giá trên 15 triệu đồng</p>
                         </div>
                         <div className="mortgage2">
-                            <img src="images/check.png" />
+                            <img src="/images/check.png" />
                             <p>Hộ khẩu/KT3</p>
                         </div> */}
                     </div>

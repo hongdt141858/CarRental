@@ -14,11 +14,11 @@ export default class Footer extends Component{
                     <div className="contact">
                         <p className="contact"><b>LIÊN HỆ</b></p>
                         <div className="email">
-                            <img src="images/email1.png" className="email"/>
+                            <img src="/images/email1.png" className="email"/>
                             <p className="email">dotriduc26071996@gmail.com</p>
                         </div>
                         <div className="phone">
-                            <img src="images/phone1.png" className="phone"/>
+                            <img src="/images/phone1.png" className="phone"/>
                             <p className="phone">0965143540</p>
                         </div>
                     </div>

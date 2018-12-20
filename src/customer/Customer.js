@@ -208,7 +208,7 @@ export default class Customer extends Component {
                 </div>
                 <div className="des-vehicle">
                     <div className="img-vehicle">
-                        <img src="images/vehicle.png" />
+                        <img src="/images/vehicle.png" />
                     </div>
                     <div className="namecar">
                         <p>{vehicle.vehicle_partner_name}</p>

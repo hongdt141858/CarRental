@@ -1,5 +1,5 @@
 import React from 'react'
-import { isAlpha } from 'validator';
+// import { isAlpha } from 'validator';
 // import { i18next } from './i18n';
 const validates = {
     maxLength: 8,

@@ -18,7 +18,7 @@ export default class Change_Password extends Component{
                 </div>
                 <div className="pass1">
                     <div className="im-pass">
-                        <img src="images/pass.png"/>
+                        <img src="/images/pass.png"/>
                     </div>
                     <div className="input-pass">
                         <input type="text" placeholder="Mật khẩu hiện tại"/>
@@ -26,7 +26,7 @@ export default class Change_Password extends Component{
                 </div>
                 <div className="pass2">
                     <div className="im-pass">
-                        <img src="images/pass.png"/>
+                        <img src="/images/pass.png"/>
                     </div>
                     <div className="input-pass">
                         <input type="text" placeholder="Mật khẩu mới"/>
@@ -34,7 +34,7 @@ export default class Change_Password extends Component{
                 </div>
                 <div className="pass3">
                     <div className="im-pass">
-                        <img src="images/pass.png"/>
+                        <img src="/images/pass.png"/>
                     </div>
                     <div className="input-pass">
                         <input type="text" placeholder="Xác nhận mật khẩu mới"/>
