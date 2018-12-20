@@ -129,7 +129,6 @@ export default class Customer extends Component {
         var day_total = reactLocalStorage.get(VarConf.booking.total_day);
         var total_price = reactLocalStorage.get(VarConf.booking.total_price);
 
-        console.log("dshad" + this.state.userInfo.fullname.value);
         if (this.state.redirectComplete) {
             return <Redirect push to={"/complete"} />;
         }

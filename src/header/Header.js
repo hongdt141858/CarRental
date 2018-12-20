@@ -15,6 +15,7 @@ class Header extends Component {
             redirectSignIn: false,
             redirectHome: false,
             redirectLogin: false,
+            is_logout: false,
         }
     }
 
@@ -53,6 +54,14 @@ class Header extends Component {
             hoverSignIn: false
         })
     };
+    
+    handleLogout = () => {
+        reactLocalStorage.set(VarConf.home.is_login, false);
+        reactLocalStorage.setObject("user.info", null);
+        this.setState({
+            is_logout: true,
+        })
+    }
 
     redirectGuide = () => {
         this.setState({ redirectGuide: true });
@@ -76,7 +85,6 @@ class Header extends Component {
 
 
     render() {
-        console.log("111111111111   " + reactLocalStorage.get(VarConf.home.is_login))
         var userInfo = reactLocalStorage.getObject("user.info", null);
         var user_name = userInfo ? userInfo.user_account_name : "";
         var is_login = reactLocalStorage.get(VarConf.home.is_login);
@@ -112,9 +120,9 @@ class Header extends Component {
                                 </i> Hướng dẫn
                             </span>
                             {
-                                (is_login == "true")
+                                (is_login == "true" || !this.state.is_logout)
                                     ?
-                                    <span><i class="zmdi zmdi-account-circle"></i>{user_name}</span>
+                                    <span><i class="zmdi zmdi-account-circle"></i>{user_name}<a> <u onClick={this.handleLogout}>[Thoát đăng nhập]</u></a></span>
                                     :
                                     <span>
                                         <span className="nav-a"
