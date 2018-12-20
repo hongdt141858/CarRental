@@ -193,12 +193,14 @@ export default class ScreenDetail extends Component {
                             </div>
                             <div className="price3">
                                 <div className="price31">
-                                    <p className="price31">Tổng số tiền phải trả</p>
+                                    <p className="price31">Tổng tiền</p>
                                 </div>
                                 <div className="price32">
-                                    <p className="price32" >{this.state.price_total} đ</p>
+                                    <p className="price32" >{MyUtil.currencyFormat(parseInt(this.state.price_total))} đ</p>
+
                                 </div>
                             </div>
+
                         </div>
                         <div className="paper">
 
@@ -218,40 +220,30 @@ export default class ScreenDetail extends Component {
                                 <p>Bằng lái xe B1, B2</p>
                             </div>
                         </div>
-                        <div className="mortgage">
+                        <div className="mortgage" style={{ height: "auto" }}>
 
                             <div className="mortgagetitle">
-                                <p>Chú ý</p>
+                                <p >Chú ý</p>
                             </div>
                             {vehicle.partner.partner_procedures.map((item) => {
                                 console.log(item.procedure_description)
                                 if (item.procedure_description)
                                     return (
-                                        <div className="mortgage1">
-                                            <p>{item.procedure_description}</p>
+                                        <div className="mortgage1" style={{ height: "auto" }}>
+                                            <p style={{ margin: '0px' }}>{"- " + item.procedure.procedure_name + " : " + item.procedure_description}</p>
                                         </div>
                                     );
                             })}
-                            {/* <div className="mortgage1">
-                            <img src="/images/check.png" />
-                            <p>Xe máy hoặc tiền mặt có trị giá trên 15 triệu đồng</p>
+
                         </div>
-                        <div className="mortgage2">
-                            <img src="/images/check.png" />
-                            <p>Hộ khẩu/KT3</p>
-                        </div> */}
-                        </div>
-                        <div className="limit">
+                        <div className="limit" style={{ marginTop: "8px" }}>
                             <div className="limittitle">
                                 <p>Giới hạn quãng đường</p>
                             </div>
                             <div className="limit-value">
                                 <p>{vehicle.partner.partner_limit_km ? vehicle.partner.partner_limit_km + " km" : "Không giới hạn"}
-                                    /{vehicle.partner.partner_over_km_fee ? MyUtil.currencyFormat(vehicle.partner.partner_over_km_fee) + " VND mỗi km" : ""}</p>
+                                    /{vehicle.partner.partner_over_km_fee ? MyUtil.currencyFormat(vehicle.partner.partner_over_km_fee) + " VND mỗi km" : "liên hệ"}</p>
                             </div>
-
-                        </div>
-                        <div className="giaoxe">
                             <div className="giaoxetitle">
                                 <p>Giao xe tận nơi</p>
                             </div>
@@ -259,11 +251,14 @@ export default class ScreenDetail extends Component {
                                 <p>Trong bán kính 10 km, phí {vehicle.partner["partner_delivery_over_km_fee"] ? vehicle.partner["partner_delivery_over_km_fee"] : " từ 5.000đ/km"}</p>
                             </div>
 
+                            <div className="btn" style ={{marginLeft: "0px", padding:"0px", marginBottom:"60px", width:"361px"}}>
+                                <button className="btn-primary" onClick={this.redirectCustomer} style ={{height:"50px", border:"none"}}>Gửi yêu cầu thuê xe</button>
+                            </div>
+
                         </div>
-                        <div className="btn">
-                            <button className="btn-primary" onClick={this.redirectCustomer}>Gửi yêu cầu thuê xe</button>
-                        </div>
+
                     </div>
+
                 </div>
                 <Footer />
             </div>

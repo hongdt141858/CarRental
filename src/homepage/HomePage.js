@@ -130,7 +130,7 @@ class HomePage extends Component {
                                     value={this.state.dateFrom}
                                 />
                             </div>
-                            <i className="zmdi zmdi-search" style={{ fontSize: "38px", float: "left", marginLeft: "60px" }} onClick={this.redirectListCar}></i>
+                            <i className="zmdi zmdi-search" style={{ fontSize: "38px", float: "left", marginLeft: "38px", marginTop:"-2px" }} onClick={this.redirectListCar}></i>
                         </div>
                     </div>
                 </div>

@@ -70,11 +70,11 @@ export default class Car_Item extends Component{
                     </div>
                     <div className="trip-distance">
                         <div className="num-trip">
-                                <img src ="images/trip.png"/>
+                                <img src ="/images/ic-seat.png" style ={{height:"20px", width:"20px"}}/>
                                 <p>{vehicle.vehicle.seat_number} chỗ</p>
                         </div>
                         <div className="num-distance">
-                                <img src="/images/distance.png"/>
+                                <img src="/images/ic-tms.png" style ={{height:"20px", width:"20px"}}/>
                                 <p>{vehicle.vehicle.transmission_name}</p>
                         </div>
                     </div>

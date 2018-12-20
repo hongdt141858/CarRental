@@ -2,8 +2,8 @@
     width: 30%;
     float: left;
     height: auto;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 15px;
+    padding-right: 25px;
 }
 .list{
     padding-top: 60px;
@@ -16,6 +16,16 @@
     display: flex;
     background-color: #e8eaef;
     height: auto;
+}
+.react-datetime-picker__button svg{
+    float: right;
+}
+button.react-datetime-picker__calendar-button.react-datetime-picker__button {
+    padding: 0px;
+    width: 40px;
+}
+.react-datetime-picker__wrapper{
+    width: 100%
 }
 .address{
     width: 300px;

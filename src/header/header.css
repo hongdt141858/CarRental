@@ -10,7 +10,7 @@ nav.occho{
 	background-color: #0f949a;
 }
 div.nav-ul{
-	height: 70px;
+	height: 43px;
 }
 span.nav-a{
 	font-size: 18px;
@@ -94,6 +94,15 @@ div.guide div.step1{
 div.con-guide h3{
 	font-size: 18px;
 	text-align: center;
+}
+span.nav-a a{
+	color: #000
+}
+span.nav-a:hover{
+	color: #fff
+}
+span.nav-a a:hover{
+	color: #fff
 }
 div.guide p.continue{
 	float: right;

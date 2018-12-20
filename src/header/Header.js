@@ -99,10 +99,10 @@ class Header extends Component {
                 <header id="header">
                     <nav className="navbar navbar-dark bg-primary header occho">
                         <div className="nav-ul">
-                            <img className="nav-a" onClick={this.redirectHome} src="images/logo3.png" />
+                            <img className="nav-a" onClick={this.redirectHome} src="/images/logo.png" style ={{width:"130px", height:"48px"}} />
                             <span className="nav-a"><i className="zmdi zmdi-phone"></i> 0965143540</span>
                             <span className="nav-a"><i className="zmdi zmdi-email"></i>ducdt@gmail.com</span>
-                            <span className="nav-a"><i className="zmdi zmdi-facebook"></i> Facebook</span>
+                            <span className="nav-a"><i className="zmdi zmdi-facebook"></i><a href ="https://www.facebook.com/profile.php?id=100008501288801"> Facebook</a></span>
                             <span className="nav-a"
                                 style={{ color: (this.state.hoverSupport ? "#fff" : "#000") }}
                                 onMouseEnter={this.handleSupportHoverOn}
