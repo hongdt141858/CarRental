@@ -70,10 +70,15 @@ class Header extends Component {
         this.setState({ redirectLogin: true });
     }
 
+    componentWillMount() {
+        reactLocalStorage.set(VarConf.home.is_login, false);
+    }
+
 
     render() {
+        console.log("111111111111   " + reactLocalStorage.get(VarConf.home.is_login))
         var userInfo = reactLocalStorage.getObject("user.info", null);
-        var user_name = userInfo.user_account_name;
+        var user_name = userInfo ? userInfo.user_account_name : "";
         var is_login = reactLocalStorage.get(VarConf.home.is_login);
 
         if (this.state.redirectGuide) {
@@ -94,7 +99,7 @@ class Header extends Component {
                 <header id="header">
                     <nav className="navbar navbar-dark bg-primary header occho">
                         <div className="nav-ul">
-                            <img className="nav-a" onClick={this.redirectHome} src="images/logo3.png"/>
+                            <img className="nav-a" onClick={this.redirectHome} src="images/logo3.png" />
                             <span className="nav-a"><i className="zmdi zmdi-phone"></i> 0965143540</span>
                             <span className="nav-a"><i className="zmdi zmdi-email"></i>ducdt@gmail.com</span>
                             <span className="nav-a"><i className="zmdi zmdi-facebook"></i> Facebook</span>
@@ -107,28 +112,30 @@ class Header extends Component {
                                 </i> Hướng dẫn
                             </span>
                             {
-                                is_login ?
-                            <span><i class="zmdi zmdi-account-circle"></i>{user_name}</span> :
-                            <span>
-                            <span className="nav-a"
-                            style={{ color: (this.state.hoverLogin ? "#fff" : "#000") }}
-                            onMouseEnter={this.handleLoginHoverOn} 
-                            onMouseLeave={this.handleLoginHoverOff}
-                            onClick={this.redirectLogin}
-                            >Đăng nhập
-                            </span>
-                           <span className="nav-a nav-dangky"
-                            style={{ color: (this.state.hoverSignIn ? "#fff" : "#000") }}
-                            onMouseEnter={this.handleSignInHoverOn}
-                            onMouseLeave={this.handleSignInHoverOff}
-                            onClick={this.redirectSignIn}>Đăng ký</span>
-                            </span>
+                                (is_login == "true")
+                                    ?
+                                    <span><i class="zmdi zmdi-account-circle"></i>{user_name}</span>
+                                    :
+                                    <span>
+                                        <span className="nav-a"
+                                            style={{ color: (this.state.hoverLogin ? "#fff" : "#000") }}
+                                            onMouseEnter={this.handleLoginHoverOn}
+                                            onMouseLeave={this.handleLoginHoverOff}
+                                            onClick={this.redirectLogin}
+                                        >Đăng nhập
+                                        </span>
+                                        <span className="nav-a nav-dangky"
+                                            style={{ color: (this.state.hoverSignIn ? "#fff" : "#000") }}
+                                            onMouseEnter={this.handleSignInHoverOn}
+                                            onMouseLeave={this.handleSignInHoverOff}
+                                            onClick={this.redirectSignIn}>Đăng ký</span>
+                                    </span>
                             }
-                           
+
                         </div>
                     </nav>
                 </header>
-                
+
             </div>
         );
     }

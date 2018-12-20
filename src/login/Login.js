@@ -45,10 +45,18 @@ export default class Login extends Component {
             user = result.data;
             reactLocalStorage.setObject("user.info", user);
         } else alert("Lỗi kết nối mạng")
+        if(result.code == "error"){
+            this.setState({
+                redirectHome: false,
+            })
+            alert(result.message);
+        }else{
+            this.setState({
+                redirectHome: true,
+            })
+        }
         reactLocalStorage.set(VarConf.home.is_login, true);
-        this.setState({
-            redirectHome: true,
-        })
+        
     };
 
     onChangeUsername = (e) => {
@@ -81,7 +89,7 @@ export default class Login extends Component {
             return <Redirect push to={"/sign_in"} />;
         }
         if (this.state.redirectHome) {
-            return <Redirect push to={"/sign_in"} />;
+            return <Redirect push to={"/"} />;
         }
         var { message, isClick, usernameInput, passwordInput } = this.state;
         return (

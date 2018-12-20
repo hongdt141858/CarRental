@@ -36,7 +36,14 @@ export default class Signin extends Component {
             message: "",
             isClick: false,
             redirectHome: false,
+            is_back: false,
         }
+    }
+
+    handleBack = () => {
+        this.setState({
+            is_back : true,
+        })
     }
 
     handleSubmit = async (e) => {
@@ -49,7 +56,6 @@ export default class Signin extends Component {
             user_account_email: userInfo.user_acc_emai.value,
             user_account_password: userInfo.user_acc_pass.value
         }
-        console.log("1111111111  " , data);
         var result = await UserApi.register(data);
         if (!result) alert("Lỗi kết nối mạng")
         if (result && result.code === "error") this.setState({ message: result.message })
@@ -123,6 +129,10 @@ export default class Signin extends Component {
             alert("Vui lòng nhập đủ thông tin")
         }
 
+        if (this.state.is_back) {
+            return <Redirect push to={"/"} />;
+        }
+
         return (
             <div className="signup-con">
                 <div className="signup-form">
@@ -186,7 +196,9 @@ export default class Signin extends Component {
                         <br />
                     
                         <button type="button" className="btn btn-success btn-signin" onClick={this.handleSubmit.bind(this)}>Đăng ký</button>
-
+                        <button type="button" className="btn btn-secondary btn-signin" style={{backgroundColor:"gray", marginTop: '20px'}} onClick={this.handleBack}>Quay lại</button>
+                        <br />
+                        <br />
                     </form>
                 </div>
             </div>

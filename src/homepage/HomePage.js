@@ -82,6 +82,7 @@ class HomePage extends Component {
     }
 
     render() {
+        // reactLocalStorage.set(VarConf.home.is_login, false)
         if (this.state.redirectListCar) {
             var data = this.state.city;
             data += '/' + MyUtil.getDatetimeFormatEn(this.state.dateTo);
